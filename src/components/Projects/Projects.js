@@ -11,7 +11,7 @@ import leaf from "../../Assets/Projects/leaf.png";
 import emotion from "../../Assets/Projects/emotion.png";
 import editor from "../../Assets/Projects/codeEditor.png";
 import suicide from "../../Assets/Projects/suicide.png";
-import bitsOfCode from "../../Assets/Projects/blog.png";
+import buapLogo from "../../Assets/MyProyects/Buap/Logo_de_la_BUAP.webp";
 
 function Projects() {
   const [showAllFitness, setShowAllFitness] = useState(false);
@@ -63,14 +63,14 @@ function Projects() {
             />
           </Col>
 
+          {/* Project 4: Portal de Gestión Académica BUAP */}
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={bitsOfCode}
+              imgPath={buapLogo}
               isBlog={false}
-              title="Bits-0f-C0de"
-              description="My personal blog page build with Next.js and Tailwind Css which takes the content from makdown files and renders it using Next.js. Supports dark mode and easy to write blogs using markdown."
-              ghLink="https://github.com/soumyajit4419/Bits-0f-C0de"
-              demoLink="https://blogs.soumya-jit.tech/"
+              title="Portal de Gestión Académica — BUAP"
+              description="Sistema web Full Stack desarrollado para la Benemérita Universidad Autónoma de Puebla (BUAP) para la administración y análisis de actividades estudiantiles. Cuenta con frontend interactivo en React, API RESTful en Node.js con operaciones CRUD completas y paneles de métricas con visualizaciones gráficas dinámicas mediante Chart.js."
+              ghLink="https://github.com/JesusAdiv/ProyectoPracticas"
             />
           </Col>
 
