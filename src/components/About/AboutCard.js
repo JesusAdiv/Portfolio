@@ -8,37 +8,44 @@ function AboutCard() {
       <Card.Body>
         <blockquote className="blockquote mb-0">
           <p style={{ textAlign: "justify" }}>
-            Hi everyone! I’m <span className="purple">Soumyajit Behera</span>{" "}
-            from <span className="purple">Bhubaneswar, India</span>.
+            ¡Hola a todos! Soy <span className="purple">Jesús Adiv Barroso</span>{" "}
+            de <span className="purple">Puebla, México</span>.
             <br />
-            I’m currently working as a{" "}
-            <span className="purple">Software Developer</span> at{" "}
-            <span className="purple">Juspay</span>.
-            <br />I hold an Integrated M.Sc. (IMSc) in{" "}
-            <span className="purple">Mathematics and Computing</span> from{" "}
-            <span className="purple">BIT Mesra</span>.
+            Soy egresado de{" "}
+            <span className="purple">
+              Ingeniería en Ciencias de la Computación
+            </span>{" "}
+            por la{" "}
+            <span className="purple">
+              Benemérita Universidad Autónoma de Puebla (BUAP)
+            </span>
+            .
+            <br />
+            Me especializo en el desarrollo{" "}
+            <span className="purple">Full-Stack</span>, la creación de
+            aplicaciones web y móviles dinámicas y la arquitectura de APIs y
+            microservicios eficientes.
             <br />
             <br />
-            Outside of coding, I love engaging in activities that keep me
-            creative and inspired:
+            Además de programar, me apasiona:
           </p>
 
           <ul>
             <li className="about-activity">
-              <ImPointRight /> Playing Games 🎮
+              <ImPointRight /> Leer 📚
             </li>
             <li className="about-activity">
-              <ImPointRight /> Writing Tech Blogs ✍️
+              <ImPointRight /> Los idiomas 🌍
             </li>
             <li className="about-activity">
-              <ImPointRight /> Traveling and Exploring New Places 🌍
+              <ImPointRight /> Entrenar y hacer ejercicio 🏋️‍♂️
             </li>
           </ul>
 
           <p style={{ color: "rgb(155 126 172)" }}>
-            "Strive to build things that make a difference!"{" "}
+            "Transformando ideas complejas en soluciones de software funcionales y escalables."
           </p>
-          <footer className="blockquote-footer">Soumyajit</footer>
+          <footer className="blockquote-footer">Jesus Adiv Barroso</footer>
         </blockquote>
       </Card.Body>
     </Card>
