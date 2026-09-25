@@ -759,3 +759,1145 @@ button:focus {
 .fork-btn-inner::after {
   display: none !important;
 }
+
+/* ==========================================================================
+   AllFitness Project Card & Showcase Modal Styling
+   ========================================================================== */
+
+/* Card Styling */
+.allfitness-card-highlight {
+  border: 1px solid rgba(199, 112, 240, 0.4) !important;
+  box-shadow: 0 6px 20px 2px rgba(162, 77, 211, 0.35) !important;
+  position: relative;
+  background: linear-gradient(145deg, rgba(27, 26, 46, 0.95), rgba(15, 12, 27, 0.95)) !important;
+}
+
+.allfitness-card-highlight:hover {
+  transform: translateY(-5px) scale(1.02) !important;
+  box-shadow: 0 10px 25px 5px rgba(199, 112, 240, 0.5) !important;
+  border-color: rgba(199, 112, 240, 0.75) !important;
+}
+
+.allfitness-card-topbar {
+  background: rgba(12, 8, 24, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px 8px 0 0;
+}
+
+.allfitness-badge-featured {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+  background: linear-gradient(45deg, #f59e0b, #fbbf24) !important;
+  color: #1a1001 !important;
+  padding: 4px 8px !important;
+  border-radius: 4px;
+}
+
+.allfitness-switcher-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ddd;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.allfitness-switcher-btn:hover,
+.allfitness-switcher-btn.active {
+  background: #c770f0;
+  border-color: #c770f0;
+  color: #0c0818;
+  font-weight: 600;
+}
+
+.allfitness-card-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: #080511;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.allfitness-card-img {
+  max-height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+  width: 100%;
+}
+
+.allfitness-card-img-wrapper:hover .allfitness-card-img {
+  transform: scale(1.05);
+}
+
+.allfitness-img-hover-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(15, 12, 27, 0.85);
+  backdrop-filter: blur(8px);
+  color: #c770f0;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(199, 112, 240, 0.4);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.allfitness-card-img-wrapper:hover .allfitness-img-hover-hint {
+  background: #c770f0;
+  color: #0c0818;
+  font-weight: 600;
+}
+
+.allfitness-card-tags {
+  margin-top: 4px;
+}
+
+.allfitness-mini-pill {
+  font-size: 0.7rem;
+  background: rgba(199, 112, 240, 0.15);
+  color: #dfb2f7;
+  border: 1px solid rgba(199, 112, 240, 0.3);
+  padding: 2px 7px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.allfitness-main-btn {
+  background: linear-gradient(135deg, #7928ca, #be50f4) !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  font-size: 0.9rem !important;
+  padding: 8px 14px !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(190, 80, 244, 0.35) !important;
+  transition: all 0.3s ease !important;
+}
+
+.allfitness-main-btn:hover {
+  background: linear-gradient(135deg, #8a33df, #cc67ff) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(190, 80, 244, 0.5) !important;
+}
+
+.allfitness-secondary-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #e2e8f0 !important;
+  font-size: 0.82rem !important;
+  padding: 6px 10px !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+.allfitness-secondary-btn:hover {
+  background: rgba(199, 112, 240, 0.25) !important;
+  border-color: #c770f0 !important;
+  color: #fff !important;
+}
+
+/* Modal Styling */
+.allfitness-modal-dialog {
+  max-width: 1080px !important;
+}
+
+.allfitness-modal-content {
+  background: #0f0c1b !important;
+  border: 1px solid rgba(199, 112, 240, 0.4) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(162, 77, 211, 0.25) !important;
+  color: #e2e8f0 !important;
+}
+
+.allfitness-modal-header {
+  background: #171329 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 1.25rem 1.5rem !important;
+  position: relative;
+}
+
+.allfitness-modal-title {
+  color: #ffffff !important;
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+}
+
+.allfitness-modal-subtitle {
+  font-size: 0.88rem !important;
+}
+
+.allfitness-status-badge {
+  background: rgba(199, 112, 240, 0.2);
+  color: #dfb2f7;
+  border: 1px solid rgba(199, 112, 240, 0.4);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 12px;
+  letter-spacing: 0.4px;
+}
+
+.allfitness-tag-badge {
+  background: rgba(255, 255, 255, 0.08);
+  color: #cbd5e1;
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.allfitness-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+}
+
+.allfitness-close-btn:hover {
+  background: #c770f0;
+  color: #0f0c1b;
+  border-color: #c770f0;
+}
+
+.allfitness-actions-bar {
+  background: rgba(27, 26, 46, 0.7);
+  border: 1px solid rgba(199, 112, 240, 0.2);
+}
+
+.allfitness-btn-link {
+  font-size: 0.85rem !important;
+  padding: 6px 14px !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  transition: all 0.2s ease !important;
+}
+
+.allfitness-btn-link:hover {
+  border-color: #c770f0 !important;
+  background: rgba(199, 112, 240, 0.2) !important;
+  color: #fff !important;
+}
+
+/* Gallery & Carousel */
+.allfitness-gallery-section {
+  background: rgba(17, 14, 31, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.allfitness-slide-counter {
+  background: rgba(199, 112, 240, 0.15);
+  color: #c770f0;
+  border: 1px solid rgba(199, 112, 240, 0.3);
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.allfitness-carousel-container {
+  background: #08060f;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(199, 112, 240, 0.25);
+}
+
+.allfitness-image-viewport {
+  position: relative;
+  min-height: 380px;
+  max-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(35, 24, 60, 0.4) 0%, rgba(8, 6, 15, 0.95) 100%);
+}
+
+.allfitness-featured-img {
+  max-height: 460px;
+  max-width: 100%;
+  object-fit: contain;
+  transition: opacity 0.3s ease;
+}
+
+.allfitness-img-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(8, 6, 15, 0.95) 0%, rgba(8, 6, 15, 0.7) 60%, transparent 100%);
+  padding: 2rem 1.5rem 1rem 1.5rem;
+  text-align: left;
+}
+
+.allfitness-img-badge {
+  display: inline-block;
+  background: #c770f0;
+  color: #0c0818;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.allfitness-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(15, 12, 27, 0.75);
+  border: 1px solid rgba(199, 112, 240, 0.4);
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 5;
+}
+
+.allfitness-nav-btn:hover {
+  background: #c770f0;
+  color: #0c0818;
+  border-color: #c770f0;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.allfitness-prev {
+  left: 12px;
+}
+
+.allfitness-next {
+  right: 12px;
+}
+
+/* Thumbnails Strip */
+.allfitness-thumbnails-strip {
+  scrollbar-width: thin;
+  scrollbar-color: #c770f0 #151128;
+}
+
+.allfitness-thumbnails-strip::-webkit-scrollbar {
+  height: 6px;
+}
+
+.allfitness-thumbnails-strip::-webkit-scrollbar-thumb {
+  background: #c770f0;
+  border-radius: 6px;
+}
+
+.allfitness-thumb-btn {
+  flex: 0 0 72px;
+  height: 52px;
+  padding: 0;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background: #08060f;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+}
+
+.allfitness-thumb-btn:hover,
+.allfitness-thumb-btn.active {
+  opacity: 1;
+  border-color: #c770f0;
+  transform: scale(1.05);
+  box-shadow: 0 0 8px rgba(199, 112, 240, 0.5);
+}
+
+.allfitness-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Tech Bar */
+.allfitness-tech-bar {
+  background: rgba(22, 17, 38, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.allfitness-tech-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e2e8f0;
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Tabs */
+.allfitness-nav-pills .allfitness-tab-link {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.allfitness-nav-pills .allfitness-tab-link:hover {
+  background: rgba(199, 112, 240, 0.15);
+  color: #fff;
+  border-color: rgba(199, 112, 240, 0.4);
+}
+
+.allfitness-nav-pills .allfitness-tab-link.active {
+  background: linear-gradient(135deg, #7928ca, #be50f4) !important;
+  color: #fff !important;
+  border-color: #be50f4 !important;
+  box-shadow: 0 4px 12px rgba(190, 80, 244, 0.4);
+}
+
+.allfitness-tab-content {
+  background: rgba(17, 13, 31, 0.8);
+  border: 1px solid rgba(199, 112, 240, 0.2);
+}
+
+.allfitness-card-box {
+  background: rgba(26, 20, 48, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  transition: border-color 0.2s ease;
+}
+
+.allfitness-card-box:hover {
+  border-color: rgba(199, 112, 240, 0.4);
+}
+
+.allfitness-card-box.highlight-border {
+  border-color: rgba(199, 112, 240, 0.4);
+  background: rgba(35, 24, 60, 0.6);
+}
+
+.allfitness-feature-pill {
+  background: rgba(26, 20, 48, 0.6);
+  border: 1px solid rgba(199, 112, 240, 0.2);
+  border-radius: 10px;
+}
+
+.allfitness-challenge-item {
+  background: rgba(26, 20, 48, 0.6);
+  border-left: 3px solid #c770f0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.allfitness-challenge-badge {
+  background: #c770f0;
+  color: #0c0818;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+/* Modal Footer */
+.allfitness-modal-footer {
+  background: #171329 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.allfitness-btn-primary {
+  background: linear-gradient(135deg, #7928ca, #be50f4) !important;
+  border: none !important;
+  font-weight: 600 !important;
+  padding: 8px 16px !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(190, 80, 244, 0.35) !important;
+}
+
+.allfitness-btn-primary:hover {
+  background: linear-gradient(135deg, #8a33df, #cc67ff) !important;
+}
+
+.allfitness-btn-close {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #cbd5e1 !important;
+  padding: 8px 16px !important;
+  border-radius: 6px !important;
+}
+
+.allfitness-btn-close:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+}
+
+/* Clean View & Fullscreen Lightbox */
+.allfitness-btn-toggle-info {
+  font-size: 0.78rem !important;
+  padding: 4px 10px !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ddd !important;
+  transition: all 0.2s ease !important;
+}
+
+.allfitness-btn-toggle-info:hover {
+  background: rgba(199, 112, 240, 0.25) !important;
+  border-color: #c770f0 !important;
+  color: #fff !important;
+}
+
+.allfitness-btn-fullscreen {
+  font-size: 0.78rem !important;
+  padding: 4px 10px !important;
+  background: linear-gradient(135deg, #7928ca, #be50f4) !important;
+  border: none !important;
+  color: #fff !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+.allfitness-btn-fullscreen:hover {
+  background: linear-gradient(135deg, #8a33df, #cc67ff) !important;
+  transform: translateY(-1px);
+}
+
+.allfitness-clean-hint {
+  position: absolute;
+  bottom: 12px;
+  background: rgba(12, 8, 24, 0.75);
+  backdrop-filter: blur(8px);
+  color: #dfb2f7;
+  font-size: 0.78rem;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(199, 112, 240, 0.35);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.allfitness-image-viewport:hover .allfitness-clean-hint {
+  background: #c770f0;
+  color: #0c0818;
+  font-weight: 600;
+}
+
+/* Lightbox Modal */
+.allfitness-lightbox-dialog {
+  max-width: 95vw !important;
+  width: 95vw !important;
+  margin: 1.5vh auto !important;
+}
+
+.allfitness-lightbox-content {
+  background: rgba(9, 6, 18, 0.98) !important;
+  border: 1px solid rgba(199, 112, 240, 0.4) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.95), 0 0 30px rgba(199, 112, 240, 0.3) !important;
+  height: 94vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+
+.allfitness-lightbox-header {
+  background: #140f24 !important;
+  padding: 10px 18px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+.allfitness-lightbox-body {
+  flex: 1 1 auto !important;
+  padding: 15px !important;
+  overflow: hidden !important;
+  background: radial-gradient(circle, rgba(30, 20, 50, 0.3) 0%, rgba(5, 3, 10, 0.98) 100%) !important;
+}
+
+.allfitness-lightbox-img {
+  max-height: calc(88vh - 120px) !important;
+  max-width: 90vw !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+  transition: transform 0.25s ease;
+}
+
+.allfitness-lightbox-footer {
+  background: #140f24 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ==========================================================================
+   Velisse EventPass Project Card & Interactive Showcase Modal Styling
+   ========================================================================== */
+
+.velisse-gold {
+  color: #e5c069 !important;
+}
+
+/* Velisse Card */
+.velisse-card-highlight {
+  border: 1px solid rgba(229, 192, 105, 0.45) !important;
+  box-shadow: 0 6px 20px 2px rgba(212, 175, 55, 0.25) !important;
+  position: relative;
+  background: linear-gradient(145deg, rgba(23, 19, 36, 0.96), rgba(14, 11, 23, 0.96)) !important;
+  transition: all 0.3s ease !important;
+}
+
+.velisse-card-highlight:hover {
+  transform: translateY(-5px) scale(1.02) !important;
+  box-shadow: 0 10px 28px 5px rgba(229, 192, 105, 0.45) !important;
+  border-color: rgba(229, 192, 105, 0.8) !important;
+}
+
+.velisse-card-topbar {
+  background: rgba(14, 11, 23, 0.75);
+  border-bottom: 1px solid rgba(229, 192, 105, 0.2);
+  border-radius: 8px 8px 0 0;
+}
+
+.velisse-badge-featured {
+  font-size: 0.72rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+  background: linear-gradient(45deg, #d4af37, #f7d780) !important;
+  color: #120e03 !important;
+  padding: 4px 8px !important;
+  border-radius: 4px;
+}
+
+.velisse-switcher-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(229, 192, 105, 0.25);
+  color: #d1d5db;
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.velisse-switcher-btn:hover,
+.velisse-switcher-btn.active {
+  background: #d4af37;
+  border-color: #d4af37;
+  color: #120e03;
+  font-weight: 600;
+}
+
+.velisse-card-img-wrapper {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: #090710;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.velisse-card-img {
+  max-height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+  width: 100%;
+}
+
+.velisse-card-img-wrapper:hover .velisse-card-img {
+  transform: scale(1.05);
+}
+
+.velisse-img-hover-hint {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(14, 11, 23, 0.88);
+  backdrop-filter: blur(8px);
+  color: #f3d483;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid rgba(229, 192, 105, 0.4);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.velisse-card-img-wrapper:hover .velisse-img-hover-hint {
+  background: #d4af37;
+  color: #120e03;
+  font-weight: 600;
+}
+
+.velisse-card-title {
+  color: #ffffff;
+  font-size: 1.18rem;
+  font-weight: 700;
+}
+
+.velisse-card-tags {
+  margin-top: 4px;
+}
+
+.velisse-mini-pill {
+  font-size: 0.7rem;
+  background: rgba(229, 192, 105, 0.12);
+  color: #f3d483;
+  border: 1px solid rgba(229, 192, 105, 0.3);
+  padding: 2px 7px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.velisse-demo-main-btn {
+  background: linear-gradient(135deg, #d4af37, #f7d780) !important;
+  border: none !important;
+  color: #120e03 !important;
+  font-weight: 700 !important;
+  font-size: 0.85rem !important;
+  padding: 8px 12px !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35) !important;
+  transition: all 0.25s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-decoration: none !important;
+}
+
+.velisse-demo-main-btn:hover {
+  background: linear-gradient(135deg, #e5c069, #fff1b8) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.55) !important;
+  color: #000000 !important;
+}
+
+.velisse-ver-proyecto-btn {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(229, 192, 105, 0.35) !important;
+  color: #f7d780 !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  padding: 8px 14px !important;
+  border-radius: 6px !important;
+  transition: all 0.25s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.velisse-ver-proyecto-btn:hover {
+  background: rgba(229, 192, 105, 0.15) !important;
+  border-color: #d4af37 !important;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+}
+
+/* Velisse Modal */
+.velisse-modal-dialog {
+  max-width: 1120px !important;
+}
+
+.velisse-modal-custom .modal-content {
+  background: #0f0c1b !important;
+  border: 1px solid rgba(229, 192, 105, 0.4) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 30px rgba(212, 175, 55, 0.2) !important;
+  color: #e2e8f0 !important;
+  overflow: hidden;
+}
+
+.velisse-modal-header {
+  background: #151125;
+  border-bottom: 1px solid rgba(229, 192, 105, 0.25);
+  position: relative;
+}
+
+.velisse-modal-logo {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.4));
+}
+
+.velisse-modal-title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.35rem;
+}
+
+.velisse-modal-badge {
+  background: linear-gradient(45deg, #d4af37, #f7d780) !important;
+  color: #120e03 !important;
+  font-size: 0.7rem !important;
+  font-weight: 700;
+  padding: 3px 8px !important;
+  border-radius: 4px;
+}
+
+.velisse-role-pill {
+  background: rgba(199, 112, 240, 0.15);
+  color: #dfb2f7;
+  border: 1px solid rgba(199, 112, 240, 0.3);
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.velisse-modal-subtitle {
+  font-size: 0.82rem;
+  color: #9ca3af !important;
+}
+
+.velisse-modal-close {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.velisse-modal-close:hover {
+  background: #d4af37;
+  color: #0f0c1b;
+  border-color: #d4af37;
+}
+
+/* View Selector Tabs */
+.velisse-tab-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #d1d5db;
+  font-size: 0.82rem;
+  padding: 5px 12px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.velisse-tab-btn:hover {
+  border-color: #d4af37;
+  color: #fff;
+}
+
+.velisse-tab-btn.active {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: #d4af37;
+  color: #f7d780;
+  font-weight: 600;
+}
+
+/* Smartphone Mockup Frame */
+.velisse-phone-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.velisse-phone-device {
+  width: 310px;
+  height: 560px;
+  background: #000000;
+  border: 10px solid #1a1728;
+  border-radius: 36px;
+  position: relative;
+  box-shadow: 0 14px 45px rgba(0, 0, 0, 0.9), 0 0 25px rgba(212, 175, 55, 0.25);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.velisse-phone-notch {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 18px;
+  background: #1a1728;
+  border-radius: 0 0 10px 10px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.velisse-phone-speaker {
+  width: 38px;
+  height: 4px;
+  background: #333;
+  border-radius: 3px;
+}
+
+.velisse-phone-camera {
+  width: 8px;
+  height: 8px;
+  background: #222;
+  border-radius: 50%;
+  border: 1px solid #444;
+}
+
+.velisse-phone-screen {
+  flex: 1;
+  overflow: hidden;
+  background: #0d0a14;
+  position: relative;
+}
+
+.velisse-phone-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #0d0a14;
+  display: block;
+}
+
+.velisse-phone-home-bar {
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.velisse-scroll-hint {
+  font-size: 0.74rem;
+  color: #9ca3af;
+}
+
+/* Modules Container */
+.velisse-modules-container {
+  width: 100%;
+  max-width: 380px;
+}
+
+.velisse-module-pill {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #d1d5db;
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.velisse-module-pill:hover,
+.velisse-module-pill.active {
+  background: #d4af37;
+  color: #120e03;
+  border-color: #d4af37;
+  font-weight: 600;
+}
+
+.velisse-module-card {
+  background: #171329;
+  border: 1px solid rgba(229, 192, 105, 0.3);
+  border-radius: 12px;
+}
+
+.velisse-module-tag {
+  font-size: 0.68rem !important;
+  background: rgba(229, 192, 105, 0.2) !important;
+  color: #f7d780 !important;
+  border: 1px solid rgba(229, 192, 105, 0.4) !important;
+}
+
+.velisse-module-img-viewport {
+  max-height: 280px;
+  overflow-y: auto;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0c0916;
+}
+
+.velisse-module-img-viewport::-webkit-scrollbar {
+  width: 4px;
+}
+
+.velisse-module-img-viewport::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.4);
+  border-radius: 4px;
+}
+
+.velisse-module-img {
+  width: 100%;
+  display: block;
+}
+
+/* Demo Action Bar */
+.velisse-demo-action-bar {
+  width: 100%;
+  max-width: 310px;
+}
+
+.velisse-live-demo-btn {
+  background: linear-gradient(135deg, #d4af37, #f7d780) !important;
+  color: #120e03 !important;
+  font-weight: 700 !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
+  transition: all 0.25s ease !important;
+  font-size: 0.82rem !important;
+}
+
+.velisse-live-demo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5) !important;
+  color: #000 !important;
+}
+
+.velisse-reload-btn {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #d1d5db !important;
+  transition: all 0.2s ease !important;
+}
+
+.velisse-reload-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border-color: #d4af37 !important;
+}
+
+/* Modal Details Content (Right Column) */
+.velisse-section-heading {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+
+.velisse-text-justify {
+  text-align: justify;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #d1d5db;
+}
+
+.velisse-tech-box {
+  background: rgba(20, 16, 33, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px 12px;
+  height: 100%;
+  transition: border-color 0.2s ease;
+}
+
+.velisse-tech-box:hover {
+  border-color: rgba(229, 192, 105, 0.4);
+}
+
+.velisse-tech-box-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #f3f4f6;
+  margin-bottom: 6px;
+}
+
+.velisse-tech-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  font-size: 0.78rem;
+  color: #cbd5e1;
+}
+
+.velisse-tech-list li {
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.velisse-tech-list li strong {
+  color: #f7d780;
+}
+
+.velisse-challenges-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.velisse-challenge-item {
+  display: flex;
+  gap: 8px;
+  background: rgba(20, 16, 33, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.82rem;
+  color: #d1d5db;
+  line-height: 1.45;
+}
+
+.velisse-challenge-item code {
+  color: #f3d483;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1px 4px;
+  border-radius: 4px;
+}
+
+.velisse-pill-feature {
+  background: rgba(229, 192, 105, 0.1);
+  color: #f3d483;
+  border: 1px solid rgba(229, 192, 105, 0.25);
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-weight: 500;
+}
+
+.velisse-modal-footer {
+  background: #151125;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.velisse-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  display: inline-block;
+}
+
+.velisse-close-action-btn {
+  font-size: 0.82rem !important;
+  padding: 6px 14px !important;
+}

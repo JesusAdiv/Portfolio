@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
+import AllFitnessCard from "./AllFitnessCard";
+import AllFitnessModal from "./AllFitnessModal";
+import VelisseCard from "./VelisseCard";
+import VelisseModal from "./VelisseModal";
 import Particle from "../Particle";
 import leaf from "../../Assets/Projects/leaf.png";
 import emotion from "../../Assets/Projects/emotion.png";
@@ -10,6 +14,23 @@ import suicide from "../../Assets/Projects/suicide.png";
 import bitsOfCode from "../../Assets/Projects/blog.png";
 
 function Projects() {
+  const [showAllFitness, setShowAllFitness] = useState(false);
+  const [initialFullscreen, setInitialFullscreen] = useState(false);
+
+  // Velisse Modal state
+  const [showVelisse, setShowVelisse] = useState(false);
+  const [velisseInitialView, setVelisseInitialView] = useState("royal");
+
+  const handleOpenAllFitness = (fullscreen = false) => {
+    setInitialFullscreen(fullscreen);
+    setShowAllFitness(true);
+  };
+
+  const handleOpenVelisse = (view = "royal") => {
+    setVelisseInitialView(view);
+    setShowVelisse(true);
+  };
+
   return (
     <Container fluid className="project-section">
       <Particle />
@@ -21,6 +42,16 @@ function Projects() {
           Here are a few projects I've worked on recently.
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+          {/* Featured Project 1: AllFitness */}
+          <Col md={4} className="project-card">
+            <AllFitnessCard onOpenModal={handleOpenAllFitness} />
+          </Col>
+
+          {/* Featured Project 2: Velisse Invitaciones SaaS */}
+          <Col md={4} className="project-card">
+            <VelisseCard onOpenModal={handleOpenVelisse} />
+          </Col>
+
           <Col md={4} className="project-card">
             <ProjectCard
               imgPath={chatify}
@@ -89,6 +120,19 @@ function Projects() {
           </Col>
         </Row>
       </Container>
+      <AllFitnessModal
+        show={showAllFitness}
+        onHide={() => {
+          setShowAllFitness(false);
+          setInitialFullscreen(false);
+        }}
+        initialFullscreen={initialFullscreen}
+      />
+      <VelisseModal
+        show={showVelisse}
+        onHide={() => setShowVelisse(false)}
+        initialView={velisseInitialView}
+      />
     </Container>
   );
 }
