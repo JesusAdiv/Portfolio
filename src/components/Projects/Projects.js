@@ -6,10 +6,10 @@ import AllFitnessModal from "./AllFitnessModal";
 import VelisseCard from "./VelisseCard";
 import VelisseModal from "./VelisseModal";
 import Particle from "../Particle";
+import krakenLogo from "../../Assets/MyProyects/Kraken-store/Logo-Kraken.png";
 import leaf from "../../Assets/Projects/leaf.png";
 import emotion from "../../Assets/Projects/emotion.png";
 import editor from "../../Assets/Projects/codeEditor.png";
-import chatify from "../../Assets/Projects/chatify.png";
 import suicide from "../../Assets/Projects/suicide.png";
 import bitsOfCode from "../../Assets/Projects/blog.png";
 
@@ -52,14 +52,14 @@ function Projects() {
             <VelisseCard onOpenModal={handleOpenVelisse} />
           </Col>
 
+          {/* Project 3: Kraken Store */}
           <Col md={4} className="project-card">
             <ProjectCard
-              imgPath={chatify}
+              imgPath={krakenLogo}
               isBlog={false}
-              title="Chatify"
-              description="Personal Chat Room or Workspace to share resources and hangout with friends build with react.js, Material-UI, and Firebase. Have features which allows user for realtime messaging, image sharing as well as supports reactions on messages."
-              ghLink="https://github.com/soumyajit4419/Chatify"
-              demoLink="https://chatify-49.web.app/"
+              title="Kraken Store"
+              description="Tienda de comercio electrónico (E-commerce) desarrollada e implementada desde cero con WordPress y WooCommerce. Incluye catálogo de productos, pasarela de pagos integrada, gestión de inventario y diseño responsivo enfocado en una experiencia de compra online ágil y personalizada."
+              instaLink="https://www.instagram.com/kraken_store_puebla"
             />
           </Col>
 
