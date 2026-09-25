@@ -10,41 +10,63 @@ function Home2() {
         <Row>
           <Col md={8} className="home-about-description">
             <h1 style={{ fontSize: "2.6em" }}>
-              LET ME <span className="purple"> INTRODUCE </span> MYSELF
+              PERMÍTEME <span className="purple"> PRESENTARME </span>
             </h1>
             <p className="home-about-body">
-              I’m a Software Engineer who loves transforming ideas into
-              reliable, scalable products. Over time, I’ve explored several
-              technologies and found my passion in building high-performance
-              systems and intuitive user experiences.
+              ¡Hola! Soy <b className="purple">Jesús</b>, desarrollador{" "}
+              <i>
+                <b className="purple">Full-Stack</b>
+              </i>{" "}
+              y recién egresado de{" "}
+              <i>
+                <b className="purple">
+                  Ingeniería en Ciencias de la Computación por la BUAP
+                </b>
+              </i>
+              .
               <br />
               <br />
-              I’m proficient in
+              Me apasiona transformar ideas complejas en soluciones de software
+              funcionales, escalables y con una gran experiencia de usuario,
+              disfrutando tanto del diseño de arquitecturas sólidas en el{" "}
+              <i>
+                <b className="purple">backend</b>
+              </i>{" "}
+              como de interfaces dinámicas e interactivas en el{" "}
+              <i>
+                <b className="purple">frontend</b>
+              </i>
+              .
+              <br />
+              <br />
+              Tengo experiencia construyendo proyectos con tecnologías como
               <i>
                 <b className="purple">
                   {" "}
-                  JavaScript, C++, Rust, Node.js, and Java{" "}
+                  JavaScript (ES6+), TypeScript, React, Angular, Node.js,
+                  Express y PHP (Laravel)
                 </b>
               </i>
-              — and I enjoy working across both backend and frontend stacks.
-              <br />
-              <br />
-              My key areas of interest include developing
+              , trabajando con bases de datos relacionales y NoSQL como{" "}
               <i>
-                <b className="purple">
-                  {" "}
-                  Web Applications, Blockchain Solutions,{" "}
-                </b>
+                <b className="purple">MySQL y MongoDB</b>
               </i>
-              and exploring new ways to bridge on-chain and off-chain systems.
+              .
               <br />
               <br />
-              Whenever possible, I love building projects with
-              <b className="purple"> Node.js </b> and modern frameworks like{" "}
+              Mis principales áreas de interés abarcan el desarrollo{" "}
               <i>
-                <b className="purple">React.js</b> and{" "}
-                <b className="purple">Next.js</b>.
+                <b className="purple">Web Full-Stack & Móvil (Flutter / Dart)</b>
               </i>
+              , el diseño de arquitecturas de{" "}
+              <i>
+                <b className="purple">APIs escalables</b>
+              </i>{" "}
+              y la integración de asistentes y modelos de{" "}
+              <i>
+                <b className="purple">Inteligencia Artificial</b>
+              </i>{" "}
+              en los flujos de desarrollo.
             </p>
           </Col>
           <Col md={4} className="myAvtar">
