@@ -7,10 +7,17 @@ import { BsGithub, BsInstagram } from "react-icons/bs";
 function ProjectCards(props) {
   return (
     <Card className="project-card-view">
-      <div className="project-card-img-container">
-        <Card.Img variant="top" src={props.imgPath} alt="card-img" />
-      </div>
-      <Card.Body className="d-flex flex-column justify-content-between">
+      {props.imgPath && (
+        <div className="project-card-img-container">
+          <Card.Img
+            variant="top"
+            src={props.imgPath}
+            alt="card-img"
+            className={props.imgClassName || ""}
+          />
+        </div>
+      )}
+      <Card.Body className={`d-flex flex-column justify-content-between ${!props.imgPath ? "pt-4" : ""}`}>
         <div>
           <Card.Title>{props.title}</Card.Title>
           <Card.Text style={{ textAlign: "justify", fontSize: "0.92rem", lineHeight: "1.5" }}>

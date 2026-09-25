@@ -500,6 +500,10 @@ button:focus {
   transform: scale(1.06);
 }
 
+.project-card-img-invert {
+  filter: brightness(0) invert(1);
+}
+
 .blog-card {
   padding-top: 50px !important;
   padding-bottom: 50px !important;
