@@ -1,6 +1,8 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home/Home";
+import Projects from "./components/Projects/Projects";
+import Trajectory from "./components/Trajectory/Trajectory";
 import About from "./components/About/About";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
@@ -23,7 +25,11 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/project" element={<Navigate to="/" replace />} />
+          <Route path="/projects" element={<Projects embedded={false} />} />
+          <Route path="/project" element={<Projects embedded={false} />} />
+          <Route path="/trayectoria" element={<Trajectory />} />
+          <Route path="/soluciones" element={<Trajectory />} />
+          <Route path="/solutions" element={<Trajectory />} />
           <Route path="/about" element={<About />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="*" element={<Navigate to="/" replace />} />

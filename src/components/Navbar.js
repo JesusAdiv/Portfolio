@@ -33,15 +33,15 @@ function NavBar() {
   const handleSectionNav = (e, sectionId) => {
     e.preventDefault();
     updateExpanded(false);
-    if (location.pathname !== "/") {
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    } else {
       navigate("/");
       setTimeout(() => {
-        const el = document.getElementById(sectionId);
-        if (el) el.scrollIntoView({ behavior: "smooth" });
+        const target = document.getElementById(sectionId);
+        if (target) target.scrollIntoView({ behavior: "smooth" });
       }, 150);
-    } else {
-      const el = document.getElementById(sectionId);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -111,8 +111,14 @@ function NavBar() {
 
             <Nav.Item>
               <Nav.Link
-                href="#proyectos"
-                onClick={(e) => handleSectionNav(e, "proyectos")}
+                as={Link}
+                to="/projects"
+                className={
+                  location.pathname === "/projects" || location.pathname === "/project"
+                    ? "active-nav-link"
+                    : ""
+                }
+                onClick={() => updateExpanded(false)}
               >
                 <AiOutlineFundProjectionScreen className="me-1" /> Proyectos (7)
               </Nav.Link>
@@ -120,8 +126,14 @@ function NavBar() {
 
             <Nav.Item>
               <Nav.Link
-                href="#soluciones"
-                onClick={(e) => handleSectionNav(e, "soluciones")}
+                as={Link}
+                to="/trayectoria"
+                className={
+                  location.pathname === "/trayectoria" || location.pathname === "/soluciones"
+                    ? "active-nav-link"
+                    : ""
+                }
+                onClick={() => updateExpanded(false)}
               >
                 <FaBolt className="me-1 text-info" /> Soluciones & Trayectoria
               </Nav.Link>

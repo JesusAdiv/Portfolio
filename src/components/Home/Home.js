@@ -268,7 +268,7 @@ function Home() {
         </Container>
       </Container>
 
-      {/* Unified Section with all 7 Real Production Projects */}
+      {/* 7 Real Production Projects right after Hero */}
       <Projects embedded={true} />
 
       {/* Value Proposition, Full SDLC, Experience & Direct Contact Hub */}
