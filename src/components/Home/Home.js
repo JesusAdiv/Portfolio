@@ -56,11 +56,10 @@ function Home() {
 
               <p className="hero-lead-text mb-4">
                 Soy <strong>Jesús Adiv Barroso Manilla</strong>,{" "}
-                <strong>Ingeniero en Ciencias de la Computación (BUAP)</strong> y{" "}
-                <strong>Técnico en Programación (CBTIS 260)</strong> con experiencia
-                profesional en <strong>Kyndrasoft (2024–2026)</strong> y proyectos a
-                medida. Desarrollo desde <strong>apps en Google Play, sistemas SaaS y PWAs</strong>{" "}
-                hasta soluciones con <strong>Inteligencia Artificial (OpenAI, Claude, Gemini, Codex)</strong>,{" "}
+                <strong>Ingeniero en Ciencias de la Computación (BUAP)</strong> con experiencia
+                profesional y proyectos a medida. Desarrollo desde{" "}
+                <strong>apps en Google Play, sistemas SaaS y PWAs</strong> hasta soluciones con{" "}
+                <strong>Inteligencia Artificial (OpenAI, Claude, Gemini, Codex)</strong>,{" "}
                 <strong>analítica de datos (SQL / Python)</strong> e infraestructura en{" "}
                 <strong>AWS</strong>.
               </p>
@@ -69,7 +68,7 @@ function Home() {
               <div className="hero-quick-checks d-flex flex-wrap gap-2 mb-4">
                 <div className="hero-check-pill">
                   <FaCheckCircle className="text-success me-2" />
-                  <span>React • Angular • Flutter • Node.js • PWA</span>
+                  <span>React • Angular • Flutter • Node</span>
                 </div>
                 <div className="hero-check-pill">
                   <FaCheckCircle className="text-success me-2" />
@@ -148,8 +147,8 @@ function Home() {
                   <div className="hero-metric-label">SaaS, CRMs, LIMS, Analítica y E-Commerce</div>
                 </div>
                 <div className="hero-metric-item">
-                  <div className="hero-metric-value">BUAP + CBTIS</div>
-                  <div className="hero-metric-label">Ing. Ciencias Computación + Téc. Programación</div>
+                  <div className="hero-metric-value">BUAP</div>
+                  <div className="hero-metric-label">Ing. en Ciencias de la Computación</div>
                 </div>
               </div>
             </Col>

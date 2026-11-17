@@ -14,7 +14,6 @@ import {
   FaCheck,
   FaArrowRight,
   FaGlobeAmericas,
-  FaEnvelope,
   FaCode,
   FaTools,
   FaProjectDiagram,
@@ -28,13 +27,24 @@ function Home2() {
   const [emailCopied, setEmailCopied] = useState(false);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText("jesusadiv1@gmail.com");
+    const email = "jesusadiv1@gmail.com";
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email);
+    } else {
+      const textArea = document.createElement("textarea");
+      textArea.value = email;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+    }
     setEmailCopied(true);
-    setTimeout(() => setEmailCopied(false), 2500);
+    setTimeout(() => setEmailCopied(false), 3000);
   };
 
   return (
-    <Container fluid className="home-about-section">
+    <>
+      <Container fluid className="home-about-section">
       <Container>
         {/* SECTION 1: VALUE PROPOSITION / SOLUTIONS (#soluciones) */}
         <div id="soluciones" className="pt-4 pb-5">
@@ -226,13 +236,13 @@ function Home2() {
                   <h5 className="timeline-company">Kyndrasoft</h5>
                   <ul className="timeline-bullet-list mb-0">
                     <li>
-                      Desarrollo de plataformas web SaaS, Progressive Web Apps (PWA) y aplicaciones móviles publicadas en <strong>Google Play</strong> utilizando <strong>Flutter, Angular, React y Node.js</strong>.
+                      Arquitectura y desarrollo de plataformas SaaS y <strong>Progressive Web Apps (PWA)</strong> interactivas (<em>Velisse EventPass, Jafra CRM</em>) y sistemas clínicos multi-sucursal (<em>CMR Clínico LIMS</em>).
                     </li>
                     <li>
-                      Participación en todas las etapas del desarrollo (SDLC) bajo metodologías ágiles (<strong>Scrum</strong>), gestión de tareas en <strong>Jira y Trello</strong> y control de versiones con <strong>Git y GitHub</strong>.
+                      Desarrollo móvil multiplataforma con apps publicadas en <strong>Google Play</strong> (<em>AllFitness con Flutter</em>), comercio electrónico (<em>Kraken Store</em>) y mantenimiento correctivo/optimización de sistemas en operación.
                     </li>
                     <li>
-                      Integración de <strong>Inteligencia Artificial (OpenAI, Gemini, Claude)</strong> en productos móviles/web, desarrollo asistido con <strong>Claude y Codex</strong>, despliegue en <strong>AWS (S3, CloudFront)</strong> y mantenimiento evolutivo.
+                      Participación en todas las etapas del desarrollo (SDLC) bajo metodologías ágiles (<strong>Scrum con Jira y Trello</strong>), control de versiones (<strong>Git y GitHub</strong>), integración de <strong>IA (OpenAI, Gemini, Claude)</strong> y despliegue en <strong>AWS (S3, CloudFront)</strong>.
                     </li>
                   </ul>
                 </div>
@@ -241,16 +251,16 @@ function Home2() {
                 <div className="timeline-card">
                   <div className="timeline-dot dot-cyan"></div>
                   <div className="d-flex flex-wrap justify-content-between align-items-center mb-1">
-                    <span className="timeline-role">Desarrollador Full Stack & Consultor de Software</span>
+                    <span className="timeline-role">Desarrollador Web & Consultor de Software</span>
                     <span className="timeline-badge">2023 – 2024</span>
                   </div>
-                  <h5 className="timeline-company">Freelancer — Proyectos en Producción a Medida</h5>
+                  <h5 className="timeline-company">Freelancer — Proyectos a Medida & E-Commerce</h5>
                   <ul className="timeline-bullet-list mb-0">
                     <li>
-                      Arquitectura y desarrollo de plataformas SaaS y <strong>Progressive Web Apps (PWA)</strong> interactivas (<em>Velisse EventPass, Jafra CRM</em>) y sistemas clínicos multi-sucursal (<em>CMR Clínico LIMS</em>).
+                      Desarrollo de <strong>sitios web y soluciones de comercio electrónico (E-Commerce)</strong> a medida, con diseño responsivo, pasarelas de pago y catálogos dinámicos.
                     </li>
                     <li>
-                      Desarrollo móvil multiplataforma, comercio electrónico (<em>Kraken Store</em>) y mantenimiento correctivo/optimización de sistemas en operación.
+                      Creación de páginas web modernas con <strong>React, JavaScript, HTML5 y CSS3</strong>, optimización de velocidad de carga, SEO y soporte técnico continuo para clientes independientes.
                     </li>
                   </ul>
                 </div>
@@ -455,38 +465,7 @@ function Home2() {
                 rel="noreferrer"
                 className="hero-btn-primary text-decoration-none"
               >
-                <FaLinkedinIn className="me-2" /> Contactar en LinkedIn
-              </a>
-
-              <a
-                href={cvPdf}
-                download="Jesus_Adiv_Barroso_CV.pdf"
-                className="hero-btn-secondary text-decoration-none"
-              >
-                <AiOutlineDownload className="me-2 text-info" /> Descargar CV en PDF
-              </a>
-
-              <button
-                type="button"
-                onClick={handleCopyEmail}
-                className="hero-btn-secondary"
-              >
-                {emailCopied ? (
-                  <>
-                    <FaCheck className="me-2 text-success" /> ¡Correo copiado! (jesusadiv1@gmail.com)
-                  </>
-                ) : (
-                  <>
-                    <FaCopy className="me-2 text-info" /> Copiar Correo: jesusadiv1@gmail.com
-                  </>
-                )}
-              </button>
-
-              <a
-                href="mailto:jesusadiv1@gmail.com"
-                className="hero-btn-secondary text-decoration-none"
-              >
-                <FaEnvelope className="me-2 text-warning" /> Enviar Email
+                <FaLinkedinIn className="me-2" /> LinkedIn
               </a>
 
               <a
@@ -497,12 +476,68 @@ function Home2() {
               >
                 <FaGithub className="me-2" /> GitHub
               </a>
+
+              <button
+                type="button"
+                onClick={handleCopyEmail}
+                className="hero-btn-secondary"
+                title="Copiar correo jesusadiv1@gmail.com"
+              >
+                {emailCopied ? (
+                  <>
+                    <FaCheck className="me-2 text-success" /> ¡Correo copiado!
+                  </>
+                ) : (
+                  <>
+                    <FaCopy className="me-2 text-info" /> Copiar Correo: jesusadiv1@gmail.com
+                  </>
+                )}
+              </button>
+
+              <a
+                href={cvPdf}
+                download="Jesus_Adiv_Barroso_CV.pdf"
+                className="hero-btn-secondary text-decoration-none"
+              >
+                <AiOutlineDownload className="me-2 text-info" /> Descargar CV en PDF
+              </a>
             </div>
           </div>
         </div>
       </Container>
     </Container>
-  );
+
+    {/* Floating Toast Notification when copying email — elevated above footer */}
+    {emailCopied && (
+      <div className="copy-toast-notification" role="status" aria-live="polite">
+        <div
+          style={{
+            background: "rgba(16, 185, 129, 0.2)",
+            color: "#10b981",
+            borderRadius: "50%",
+            width: "30px",
+            height: "30px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "0.9rem",
+            flexShrink: 0,
+          }}
+        >
+          <FaCheck />
+        </div>
+        <div className="text-start pe-2">
+          <div className="fw-bold text-white" style={{ fontSize: "0.9rem" }}>
+            ¡Correo copiado al portapapeles!
+          </div>
+          <div className="text-info small" style={{ fontSize: "0.8rem" }}>
+            jesusadiv1@gmail.com
+          </div>
+        </div>
+      </div>
+    )}
+  </>
+);
 }
 
 export default Home2;
