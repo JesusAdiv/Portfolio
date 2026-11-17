@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jafra CRM & PWA — Demo Interactiva | Jesús Adiv Barroso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #090712;
+      --bg-panel: #130f24;
+      --bg-card: rgba(26, 20, 48, 0.85);
+      --border: rgba(168, 85, 247, 0.22);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --jafra-purple: #9333ea;
+      --jafra-magenta: #db2777;
+      --jafra-gold: #f59e0b;
+      --emerald: #10b981;
+      --cyan: #38bdf8;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      background-image:
+        radial-gradient(circle at 10% 10%, rgba(147, 51, 234, 0.16), transparent 38%),
+        radial-gradient(circle at 90% 15%, rgba(219, 39, 119, 0.12), transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(245, 158, 11, 0.08), transparent 40%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Top Portfolio Banner */
+    .demo-topbar {
+      background: rgba(9, 7, 18, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-emblem {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--jafra-purple), var(--jafra-magenta));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #fff;
+      box-shadow: 0 6px 18px rgba(147, 51, 234, 0.4);
+    }
+
+    .brand-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pwa-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    .stack-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      background: rgba(168, 85, 247, 0.16);
+      border: 1px solid rgba(168, 85, 247, 0.35);
+      color: #d8b4fe;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    .brand-sub {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .nav-tabs-bar {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: #cbd5e1;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .tab-btn:hover {
+      border-color: rgba(168, 85, 247, 0.5);
+      color: #fff;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--jafra-purple), var(--jafra-magenta));
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(147, 51, 234, 0.35);
+    }
+
+    .prod-link-btn {
+      background: rgba(245, 158, 11, 0.14);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: #fbbf24;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 7px 12px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .prod-link-btn:hover {
+      background: rgba(245, 158, 11, 0.25);
+      color: #fff;
+    }
+
+    /* Main Workspace */
+    .workspace {
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 24px;
+      flex: 1;
+    }
+
+    .view-section {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .view-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Header Control Row */
+    .section-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      padding: 16px 20px;
+      border-radius: 14px;
+    }
+
+    .cycle-select {
+      background: #0d0a1a;
+      color: #fff;
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--jafra-purple), var(--jafra-magenta));
+    }
+
+    .kpi-label {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .kpi-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 6px 0 4px;
+      color: #fff;
+    }
+
+    .kpi-trend {
+      font-size: 0.78rem;
+      color: var(--emerald);
+      font-weight: 600;
+    }
+
+    /* Content 2-Col */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 960px) {
+      .grid-2col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .panel-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .panel-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Table */
+    .crm-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.84rem;
+    }
+
+    .crm-table th {
+      text-align: left;
+      color: var(--text-muted);
+      font-weight: 600;
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .crm-table td {
+      padding: 12px 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      vertical-align: middle;
+    }
+
+    .badge-status {
+      padding: 3px 9px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .badge-ok { background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35); }
+    .badge-warn { background: rgba(245, 158, 11, 0.15); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); }
+    .badge-vip { background: rgba(168, 85, 247, 0.18); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.4); }
+
+    .btn-wa-mini {
+      background: rgba(16, 185, 129, 0.16);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-wa-mini:hover {
+      background: #10b981;
+      color: #02100b;
+    }
+
+    /* Bar Chart Simulation */
+    .bar-row {
+      margin-bottom: 14px;
+    }
+
+    .bar-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      margin-bottom: 5px;
+    }
+
+    .bar-track {
+      height: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--jafra-purple), var(--jafra-magenta));
+      border-radius: 6px;
+      transition: width 0.4s ease;
+    }
+
+    /* SKU Catalog Grid */
+    .sku-search-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .sku-input {
+      flex: 1;
+      min-width: 240px;
+      background: #0d0a1a;
+      border: 1px solid var(--border);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-family: inherit;
+    }
+
+    .sku-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .sku-card {
+      background: rgba(13, 10, 26, 0.8);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s;
+    }
+
+    .sku-card:hover {
+      border-color: var(--jafra-purple);
+      transform: translateY(-2px);
+    }
+
+    .sku-code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: #c084fc;
+      background: rgba(168, 85, 247, 0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+
+    .btn-add-sku {
+      margin-top: 10px;
+      background: linear-gradient(135deg, var(--jafra-purple), var(--jafra-magenta));
+      border: none;
+      color: #fff;
+      padding: 7px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* WhatsApp Note Generator Preview */
+    .wa-preview-card {
+      background: #0b141a;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 12px;
+      padding: 16px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.85rem;
+      line-height: 1.55;
+      color: #e2e8f0;
+      white-space: pre-line;
+    }
+
+    /* Phone Mockup for PWA */
+    .pwa-phone {
+      width: 320px;
+      margin: 0 auto;
+      background: #0d0a1a;
+      border: 8px solid #27203d;
+      border-radius: 34px;
+      padding: 18px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation & Context Bar -->
+  <header class="demo-topbar">
+    <div class="brand-group">
+      <div class="brand-emblem">JF</div>
+      <div>
+        <div class="brand-title">
+          <span>Jafra CRM — Ventas, Catálogo SKU y Cobranza</span>
+          <span class="pwa-pill">⚡ PWA Offline-Ready</span>
+          <span class="stack-pill">Angular • TypeScript • AWS CloudFront</span>
+        </div>
+        <div class="brand-sub">Demostración interactiva del sistema en producción (sin requerir credenciales corporativas)</div>
+      </div>
+    </div>
+
+    <div class="nav-tabs-bar">
+      <button class="tab-btn active" onclick="switchView('dashboard', this)">📊 1. Dashboard & Linaje</button>
+      <button class="tab-btn" onclick="switchView('catalogo', this)">🛍️ 2. Catálogo SKU & Pedidos</button>
+      <button class="tab-btn" onclick="switchView('cobranza', this)">💬 3. Notas WhatsApp & Saldos</button>
+      <button class="tab-btn" onclick="switchView('pwa', this)">📱 4. Arquitectura PWA</button>
+    </div>
+
+    <a href="https://d3qljhtted9p9h.cloudfront.net/app/dashboard?accessDenied=administration" target="_blank" rel="noopener noreferrer" class="prod-link-btn" title="Abrir despliegue real en AWS CloudFront (requiere cuenta activa de Jafra)">
+      ☁️ Abrir CloudFront (Prod) ↗
+    </a>
+  </header>
+
+  <main class="workspace">
+    <!-- VIEW 1: DASHBOARD COMERCIAL -->
+    <section id="view-dashboard" class="view-section active">
+      <div class="section-toolbar">
+        <div>
+          <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.3rem;">Panel de Control de Líder Comercial</h2>
+          <p style="font-size:0.84rem;color:var(--text-muted);">Monitoreo en tiempo real de metas por ciclo, cobranza activa y alertas de recompra</p>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:0.8rem;color:var(--text-muted);">Ciclo Comercial:</span>
+          <select class="cycle-select" id="cycleSelect" onchange="updateCycleMetrics()">
+            <option value="nov">Campaña C-11 (Actual • 92% Meta)</option>
+            <option value="oct">Campaña C-10 (Cerrado • 108% Meta)</option>
+            <option value="sep">Campaña C-09 (Cerrado • 101% Meta)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">FACTURACIÓN DEL CICLO</div>
+          <div class="kpi-val" id="kpi-ventas">$48,920 MXN</div>
+          <div class="kpi-trend" id="kpi-ventas-sub">▲ +18.4% vs ciclo anterior</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">COBRANZA RECUPERADA</div>
+          <div class="kpi-val" id="kpi-cobranza">$41,580 MXN</div>
+          <div class="kpi-trend" style="color:#38bdf8;" id="kpi-cobranza-sub">85% liquidado • $7,340 por cobrar</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">COMISIÓN DE LINAJE & PERSONAL</div>
+          <div class="kpi-val" id="kpi-comision">$16,450 MXN</div>
+          <div class="kpi-trend">Margen 50% Consultora + Bono Red</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">PEDIDOS Y RECOMPRAS ACTIVAS</div>
+          <div class="kpi-val" id="kpi-pedidos">34 Pedidos</div>
+          <div class="kpi-trend" style="color:#fbbf24;">⚡ 6 clientas listas para recompra (30 días)</div>
+        </div>
+      </div>
+
+      <div class="grid-2col">
+        <div class="panel-box">
+          <div class="panel-title">
+            <span>Seguimiento de Clientas, Consultoras y Saldos</span>
+            <span class="pwa-pill">Sincronizado</span>
+          </div>
+          <div style="overflow-x:auto;">
+            <table class="crm-table">
+              <thead>
+                <tr>
+                  <th>Clienta / Consultora</th>
+                  <th>Productos / Ciclo</th>
+                  <th>Total</th>
+                  <th>Saldo Pendiente</th>
+                  <th>Estado</th>
+                  <th>Acción 1-Clic</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Mariana Gómez</strong><br><span style="font-size:0.72rem;color:var(--text-muted);">VIP • Recompra frecuente</span></td>
+                  <td>Jalea Real RJx + Navîgo</td>
+                  <td>$2,480</td>
+                  <td style="color:#fbbf24;font-weight:700;">$680</td>
+                  <td><span class="badge-status badge-warn">Abono Parcial</span></td>
+                  <td><button class="btn-wa-mini" onclick="openCobranzaFor('Mariana Gómez', 'Jalea Real RJx (200ml) + Fragancia Navîgo Homme', 2480, 1800)">💬 Nota WhatsApp</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Laura Patricia Ríos</strong><br><span style="font-size:0.72rem;color:var(--text-muted);">Consultora Linaje N1</span></td>
+                  <td>Lote Campaña C-11 (9 SKUs)</td>
+                  <td>$6,120</td>
+                  <td style="color:#34d399;font-weight:700;">$0</td>
+                  <td><span class="badge-status badge-ok">Liquidado</span></td>
+                  <td><button class="btn-wa-mini" onclick="openCobranzaFor('Laura Patricia Ríos', 'Pedido Mayorista Campaña C-11 (9 SKUs)', 6120, 6120)">📄 Ver Recibo</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Claudia Hernández</strong><br><span style="font-size:0.72rem;color:var(--text-muted);">Alerta Recompra (28 días)</span></td>
+                  <td>Set Defy + Double Nature</td>
+                  <td>$1,890</td>
+                  <td style="color:#fbbf24;font-weight:700;">$950</td>
+                  <td><span class="badge-status badge-warn">Vence Viernes</span></td>
+                  <td><button class="btn-wa-mini" onclick="openCobranzaFor('Claudia Hernández', 'Set Jafra Defy + Double Nature Glam', 1890, 940)">💬 Nota WhatsApp</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Sofía Castellanos</strong><br><span style="font-size:0.72rem;color:var(--text-muted);">Clienta Preferente</span></td>
+                  <td>Gold Dynamics Crema Día/Noche</td>
+                  <td>$1,650</td>
+                  <td style="color:#fbbf24;font-weight:700;">$450</td>
+                  <td><span class="badge-status badge-vip">2do Pago</span></td>
+                  <td><button class="btn-wa-mini" onclick="openCobranzaFor('Sofía Castellanos', 'Línea Gold Dynamics Reafirmante Día/Noche', 1650, 1200)">💬 Nota WhatsApp</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel-box">
+          <div class="panel-title">
+            <span>Rendimiento por Línea de Producto</span>
+            <span style="font-size:0.75rem;color:var(--text-muted);">Angular + Analytics</span>
+          </div>
+          <div class="bar-row">
+            <div class="bar-header"><span>Cuidado del Cutis (Royal Jelly / Gold / Defy)</span><strong>44% ($21,524)</strong></div>
+            <div class="bar-track"><div class="bar-fill" style="width:88%;"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-header"><span>Fragancias Dama y Caballero (Navîgo / Double Nature)</span><strong>32% ($15,654)</strong></div>
+            <div class="bar-track"><div class="bar-fill" style="width:68%;"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-header"><span>Maquillaje & Color (Jafra Beauty)</span><strong>15% ($7,338)</strong></div>
+            <div class="bar-track"><div class="bar-fill" style="width:42%;"></div></div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-header"><span>Cuidado Corporal (Spa & Almendras)</span><strong>9% ($4,404)</strong></div>
+            <div class="bar-track"><div class="bar-fill" style="width:28%;"></div></div>
+          </div>
+
+          <div style="margin-top:20px;padding:14px;background:rgba(168,85,247,0.1);border:1px solid var(--border);border-radius:10px;font-size:0.8rem;line-height:1.5;">
+            <strong style="color:#d8b4fe;">⚡ Automatización Comercial:</strong><br>
+            El motor reactivo detecta qué clientas compraron productos consumibles hace 25–30 días y genera recordatorios de recompra automáticos para maximizar la retención por ciclo.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: CATÁLOGO INTELIGENTE SKU & PEDIDOS -->
+    <section id="view-catalogo" class="view-section">
+      <div class="grid-2col">
+        <div class="panel-box">
+          <div class="panel-title">
+            <span>Buscador Instantáneo de Catálogo por SKU</span>
+            <span class="stack-pill">Indexación en Memoria • 0ms Latency</span>
+          </div>
+          <div class="sku-search-bar">
+            <input type="text" id="skuSearchInput" class="sku-input" placeholder="Buscar por código SKU (ej. 1042, 2089) o nombre (Jalea Real, Navîgo, Gold)..." oninput="filterCatalog()" />
+          </div>
+          <div class="sku-grid" id="skuGridContainer"></div>
+        </div>
+
+        <div class="panel-box">
+          <div class="panel-title">
+            <span>Cotizador y Pedido Activo</span>
+            <span class="pwa-pill" id="cartCountBadge">2 artículos</span>
+          </div>
+          <div id="cartItemsList" style="margin-bottom:16px;display:flex;flex-direction:column;gap:10px;"></div>
+
+          <div style="border-top:1px solid var(--border-subtle);padding-top:14px;font-size:0.86rem;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="color:var(--text-muted);">Precio Público Catálogo:</span>
+              <strong id="cartPublicTotal">$0 MXN</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+              <span style="color:var(--text-muted);">Costo Consultora (50% Desc.):</span>
+              <strong id="cartWholesaleTotal" style="color:#38bdf8;">$0 MXN</strong>
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:14px;font-size:1rem;">
+              <span><strong>Ganancia Neta Estimada:</strong></span>
+              <strong id="cartProfitTotal" style="color:#34d399;">$0 MXN</strong>
+            </div>
+            <button class="btn-add-sku" style="width:100%;padding:11px;font-size:0.88rem;" onclick="sendCartToCobranza()">
+              📲 Generar Nota de Venta para WhatsApp →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: COBRANZA & NOTAS WHATSAPP -->
+    <section id="view-cobranza" class="view-section">
+      <div class="grid-2col">
+        <div class="panel-box">
+          <div class="panel-title">
+            <span>Configurador de Estado de Cuenta y Abonos</span>
+            <span class="stack-pill">WhatsApp Flow Builder</span>
+          </div>
+          <div style="display:grid;gap:12px;">
+            <div>
+              <label style="font-size:0.78rem;color:var(--text-muted);display:block;margin-bottom:4px;">Nombre de la Clienta</label>
+              <input id="waClientName" class="sku-input" style="width:100%;" value="Mariana Gómez" oninput="renderWhatsAppNote()" />
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--text-muted);display:block;margin-bottom:4px;">Concepto / Productos Entregados</label>
+              <input id="waConcept" class="sku-input" style="width:100%;" value="Jalea Real RJx (200ml) + Fragancia Navîgo Homme" oninput="renderWhatsAppNote()" />
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div>
+                <label style="font-size:0.78rem;color:var(--text-muted);display:block;margin-bottom:4px;">Total de la Nota ($ MXN)</label>
+                <input type="number" id="waTotal" class="sku-input" style="width:100%;" value="2480" oninput="renderWhatsAppNote()" />
+              </div>
+              <div>
+                <label style="font-size:0.78rem;color:var(--text-muted);display:block;margin-bottom:4px;">Abonado hasta hoy ($ MXN)</label>
+                <input type="number" id="waPaid" class="sku-input" style="width:100%;" value="1800" oninput="renderWhatsAppNote()" />
+              </div>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+              <button class="btn-wa-mini" onclick="addQuickPayment(200)">+ Registrar Abono $200</button>
+              <button class="btn-wa-mini" onclick="addQuickPayment(500)">+ Registrar Abono $500</button>
+              <button class="btn-wa-mini" onclick="liquidateAccount()">✓ Liquidar Total</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-box">
+          <div class="panel-title">
+            <span>Previsualización en Tiempo Real (Payload WhatsApp)</span>
+            <span class="pwa-pill" id="copyStatusBadge">Listo para enviar</span>
+          </div>
+          <div class="wa-preview-card" id="waPreviewBox"></div>
+          <div style="display:flex;gap:10px;margin-top:14px;">
+            <button class="btn-add-sku" style="flex:1;padding:10px;" onclick="copyWaMessage()">📋 Copiar Nota Formateada</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: ARQUITECTURA PWA -->
+    <section id="view-pwa" class="view-section">
+      <div class="grid-2col" style="align-items:center;">
+        <div class="panel-box">
+          <div class="panel-title">
+            <span>Progressive Web App (PWA) & Cloud Architecture</span>
+            <span class="pwa-pill">Instalable en iOS / Android / Desktop</span>
+          </div>
+          <p style="font-size:0.9rem;color:#cbd5e1;line-height:1.6;margin-bottom:16px;">
+            Las líderes comerciales y consultoras de Jafra operan constantemente en campo. Por ello, la plataforma fue construida con capacidades <strong>Progressive Web App (PWA)</strong> sobre <strong>Angular + TypeScript</strong> y desplegada en <strong>AWS CloudFront</strong>:
+          </p>
+          <div style="display:grid;gap:12px;font-size:0.84rem;">
+            <div style="padding:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border-subtle);border-radius:10px;">
+              <strong style="color:#34d399;">1. Instalación Directa (Web App Manifest):</strong> Se instala en la pantalla de inicio del smartphone sin depender de tiendas intermedias, ejecutándose en ventana standalone a pantalla completa.
+            </div>
+            <div style="padding:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border-subtle);border-radius:10px;">
+              <strong style="color:#38bdf8;">2. Service Workers & Caché de Catálogo SKU:</strong> Estrategia <code>Stale-While-Revalidate</code> que mantiene el catálogo de precios y códigos SKU accesible al instante incluso con señal móvil intermitente.
+            </div>
+            <div style="padding:12px;background:rgba(255,255,255,0.03);border:1px solid var(--border-subtle);border-radius:10px;">
+              <strong style="color:#d8b4fe;">3. Distribución Global en AWS CloudFront + Guards RBAC:</strong> Baja latencia de carga mediante CDN y protección de rutas administrativas mediante Angular Guards e interceptores JWT.
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="pwa-phone">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:0.75rem;color:var(--text-muted);">
+              <span>9:41 • Jafra PWA</span>
+              <span style="color:#34d399;">● Offline-Ready</span>
+            </div>
+            <div style="background:linear-gradient(135deg,var(--jafra-purple),var(--jafra-magenta));padding:14px;border-radius:14px;margin-bottom:12px;">
+              <div style="font-size:0.72rem;opacity:0.9;">META PERSONAL DEL CICLO</div>
+              <div style="font-size:1.35rem;font-weight:800;margin:2px 0;">$48,920 / $50,000</div>
+              <div style="font-size:0.72rem;">97.8% completado • Quedan 4 días</div>
+            </div>
+            <div style="background:rgba(255,255,255,0.05);padding:12px;border-radius:10px;margin-bottom:10px;font-size:0.78rem;">
+              <strong>📲 App Instalada en Dispositivo</strong>
+              <p style="color:var(--text-muted);margin-top:4px;">Catálogo C-11 en caché local (420 SKUs listos sin consumo de datos).</p>
+            </div>
+            <div style="background:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.35);padding:12px;border-radius:10px;font-size:0.78rem;color:#34d399;">
+              ✓ Service Worker Activo (v2.4.0)<br>
+              ✓ Sincronización con AWS CloudFront
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const catalogData = [
+      { sku: "SKU-1042", name: "Jalea Real Facial RJx (200ml)", line: "Royal Jelly", price: 1380 },
+      { sku: "SKU-2089", name: "Fragancia Navîgo Homme EDT", line: "Fragancias", price: 1100 },
+      { sku: "SKU-3115", name: "Set Gold Dynamics Reafirmante", line: "Gold", price: 1650 },
+      { sku: "SKU-4021", name: "Double Nature Glam Edición VIP", line: "Juvenil", price: 690 },
+      { sku: "SKU-5190", name: "Aceite Corporal de Almendras (500ml)", line: "Spa Corporal", price: 780 },
+      { sku: "SKU-6034", name: "Suero Facial Jafra Defy Lift", line: "Defy", price: 1200 }
+    ];
+
+    let cart = [catalogData[0], catalogData[1]];
+
+    function switchView(viewId, btn) {
+      document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('view-' + viewId).classList.add('active');
+      if (btn) btn.classList.add('active');
+    }
+
+    function updateCycleMetrics() {
+      const val = document.getElementById('cycleSelect').value;
+      const data = {
+        nov: { v: "$48,920 MXN", vs: "▲ +18.4% vs ciclo anterior", c: "$41,580 MXN", cs: "85% liquidado • $7,340 por cobrar", com: "$16,450 MXN", p: "34 Pedidos" },
+        oct: { v: "$54,100 MXN", vs: "★ 108% de Meta Cumplida", c: "$54,100 MXN", cs: "100% liquidado • Cero cartera vencida", com: "$19,280 MXN", p: "41 Pedidos" },
+        sep: { v: "$46,300 MXN", vs: "✓ 101% de Meta Cumplida", c: "$46,300 MXN", cs: "100% liquidado", com: "$15,610 MXN", p: "32 Pedidos" }
+      }[val];
+      document.getElementById('kpi-ventas').textContent = data.v;
+      document.getElementById('kpi-ventas-sub').textContent = data.vs;
+      document.getElementById('kpi-cobranza').textContent = data.c;
+      document.getElementById('kpi-cobranza-sub').textContent = data.cs;
+      document.getElementById('kpi-comision').textContent = data.com;
+      document.getElementById('kpi-pedidos').textContent = data.p;
+    }
+
+    function filterCatalog() {
+      const q = (document.getElementById('skuSearchInput').value || "").toLowerCase();
+      const container = document.getElementById('skuGridContainer');
+      const filtered = catalogData.filter(item =>
+        item.sku.toLowerCase().includes(q) ||
+        item.name.toLowerCase().includes(q) ||
+        item.line.toLowerCase().includes(q)
+      );
+      container.innerHTML = filtered.map((item, idx) => `
+        <div class="sku-card">
+          <div>
+            <span class="sku-code">${item.sku} • ${item.line}</span>
+            <div style="font-weight:700;font-size:0.9rem;margin-bottom:6px;">${item.name}</div>
+            <div style="font-size:0.8rem;color:var(--text-muted);">Público: <strong style="color:#fff;">$${item.price}</strong> | Consultora: <strong style="color:#34d399;">$${item.price / 2}</strong></div>
+          </div>
+          <button class="btn-add-sku" onclick="addToCart('${item.sku}')">+ Agregar al Pedido</button>
+        </div>
+      `).join('');
+    }
+
+    function addToCart(sku) {
+      const found = catalogData.find(i => i.sku === sku);
+      if (found) {
+        cart.push(found);
+        renderCart();
+      }
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+    }
+
+    function renderCart() {
+      const list = document.getElementById('cartItemsList');
+      document.getElementById('cartCountBadge').textContent = `${cart.length} artículos`;
+      const totalPub = cart.reduce((acc, i) => acc + i.price, 0);
+      const totalWhole = totalPub * 0.5;
+      document.getElementById('cartPublicTotal').textContent = `$${totalPub.toLocaleString()} MXN`;
+      document.getElementById('cartWholesaleTotal').textContent = `$${totalWhole.toLocaleString()} MXN`;
+      document.getElementById('cartProfitTotal').textContent = `+$${totalWhole.toLocaleString()} MXN`;
+
+      list.innerHTML = cart.map((item, idx) => `
+        <div style="display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.04);padding:8px 12px;border-radius:8px;font-size:0.82rem;">
+          <div>
+            <strong>${item.name}</strong><br>
+            <span style="color:var(--text-muted);font-size:0.72rem;">${item.sku} • $${item.price} MXN</span>
+          </div>
+          <button onclick="removeFromCart(${idx})" style="background:none;border:none;color:#f87171;cursor:pointer;font-weight:700;">✕</button>
+        </div>
+      `).join('');
+    }
+
+    function openCobranzaFor(client, concept, total, paid) {
+      document.getElementById('waClientName').value = client;
+      document.getElementById('waConcept').value = concept;
+      document.getElementById('waTotal').value = total;
+      document.getElementById('waPaid').value = paid;
+      renderWhatsAppNote();
+      const btns = document.querySelectorAll('.tab-btn');
+      switchView('cobranza', btns[2]);
+    }
+
+    function sendCartToCobranza() {
+      const totalPub = cart.reduce((acc, i) => acc + i.price, 0);
+      const names = cart.map(i => i.name).join(' + ');
+      openCobranzaFor('Clienta Mostrador / VIP', names || 'Pedido Campaña C-11', totalPub, 0);
+    }
+
+    function addQuickPayment(amount) {
+      const paidEl = document.getElementById('waPaid');
+      const total = Number(document.getElementById('waTotal').value) || 0;
+      paidEl.value = Math.min(total, (Number(paidEl.value) || 0) + amount);
+      renderWhatsAppNote();
+    }
+
+    function liquidateAccount() {
+      document.getElementById('waPaid').value = document.getElementById('waTotal').value;
+      renderWhatsAppNote();
+    }
+
+    function renderWhatsAppNote() {
+      const name = document.getElementById('waClientName').value;
+      const concept = document.getElementById('waConcept').value;
+      const total = Number(document.getElementById('waTotal').value) || 0;
+      const paid = Number(document.getElementById('waPaid').value) || 0;
+      const rest = Math.max(0, total - paid);
+
+      const text = `✨ *ESTADO DE CUENTA JAFRA VIP* ✨\nHola *${name}*, te comparto el resumen actualizado de tu pedido:\n\n🛍️ *Productos:* ${concept}\n💰 *Total de Nota:* $${total.toLocaleString()} MXN\n✅ *Abonado:* $${paid.toLocaleString()} MXN\n📌 *Saldo Pendiente:* $${rest.toLocaleString()} MXN\n\n${rest === 0 ? '🎉 *¡Tu cuenta se encuentra 100% liquidada! Muchas gracias por tu preferencia.*' : '📲 Puedes realizar tu siguiente abono por transferencia o efectivo. ¡Gracias por tu confianza!'}`;
+      document.getElementById('waPreviewBox').textContent = text;
+    }
+
+    function copyWaMessage() {
+      navigator.clipboard.writeText(document.getElementById('waPreviewBox').textContent);
+      const badge = document.getElementById('copyStatusBadge');
+      badge.textContent = "✓ ¡Nota copiada al portapapeles!";
+      setTimeout(() => badge.textContent = "Listo para enviar", 2500);
+    }
+
+    filterCatalog();
+    renderCart();
+    renderWhatsAppNote();
+  </script>
+</body>
+</html>

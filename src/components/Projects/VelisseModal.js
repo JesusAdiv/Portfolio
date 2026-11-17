@@ -185,16 +185,37 @@ function VelisseModal({ show, onHide, initialView = "royal" }) {
               {/* Section 1: Concrete Summary */}
               <div className="velisse-info-block mb-4">
                 <h5 className="velisse-section-heading">
-                  <span className="velisse-gold">📌</span> Propuesta de Valor & Solución
+                  <span className="velisse-gold">📌</span> Qué Problema Resuelve Velisse
                 </h5>
-                <p className="velisse-text-justify">
-                  SaaS diseñado para transformar la tradicional invitación de papel o PDF estático en un
-                  <strong> ecosistema digital web interactivo end-to-end</strong>. La plataforma abarca todo el ciclo de vida:
-                  diseño y personalización temática con IA, envíos masivos directos a WhatsApp,
-                  confirmaciones inteligentes (RSVP), diagramado visual de salas con asignación de mesas
-                  (<em>Seating Chart</em>), hasta el control de acceso en puerta mediante escáner QR en tiempo real
-                  y portales en vivo para proveedores (DJ y fotógrafo).
+                <p className="velisse-text-justify mb-2">
+                  Reemplaza las invitaciones estáticas en PDF o papel por una <strong>plataforma web interactiva todo-en-uno</strong> para bodas y eventos:
                 </p>
+                <Row className="g-2 mt-1">
+                  <Col sm={6}>
+                    <div className="velisse-challenge-item">
+                      <FaCheckCircle className="velisse-gold mt-1 flex-shrink-0" />
+                      <div><strong>Confirmación por WhatsApp:</strong> Los invitados confirman asistencia en 1 clic sin llenar formularios largos.</div>
+                    </div>
+                  </Col>
+                  <Col sm={6}>
+                    <div className="velisse-challenge-item">
+                      <FaCheckCircle className="velisse-gold mt-1 flex-shrink-0" />
+                      <div><strong>Acceso QR en Recepción:</strong> El staff escanea el pase del invitado con cualquier celular en la puerta.</div>
+                    </div>
+                  </Col>
+                  <Col sm={6}>
+                    <div className="velisse-challenge-item">
+                      <FaCheckCircle className="velisse-gold mt-1 flex-shrink-0" />
+                      <div><strong>Mapa Visual de Mesas:</strong> Asignación interactiva de lugares (Seating Chart) en tiempo real.</div>
+                    </div>
+                  </Col>
+                  <Col sm={6}>
+                    <div className="velisse-challenge-item">
+                      <FaCheckCircle className="velisse-gold mt-1 flex-shrink-0" />
+                      <div><strong>Portales para DJ y Fotos:</strong> Los invitados sugieren canciones y suben fotos en vivo durante el evento.</div>
+                    </div>
+                  </Col>
+                </Row>
               </div>
 
               {/* Section 2: Concrete Tech Stack */}

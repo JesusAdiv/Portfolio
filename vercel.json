@@ -1,0 +1,32 @@
+{
+  "rewrites": [
+    {
+      "source": "/proyectos/:match*",
+      "destination": "/proyectos/:match*"
+    },
+    {
+      "source": "/allfitness-mobile/:match*",
+      "destination": "/allfitness-mobile/:match*"
+    },
+    {
+      "source": "/demo-jafra/:match*",
+      "destination": "/demo-jafra/:match*"
+    },
+    {
+      "source": "/velisse-demos/:match*",
+      "destination": "/velisse-demos/:match*"
+    },
+    {
+      "source": "/jafra-demos/:match*",
+      "destination": "/jafra-demos/:match*"
+    },
+    {
+      "source": "/allfitness-demos/:match*",
+      "destination": "/allfitness-demos/:match*"
+    },
+    {
+      "source": "/((?!.*\\.).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

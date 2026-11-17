@@ -167,10 +167,10 @@ function AllFitnessModal({ show, onHide, initialFullscreen = false }) {
             <span className="allfitness-tag-badge">AI Powered</span>
           </div>
           <h2 className="allfitness-modal-title mb-0">
-            AllFitness — <span className="purple">Ecosistema Digital Integral</span>
+            AllFitness — <span className="text-gradient-brand">Ecosistema Digital Integral</span>
           </h2>
           <p className="allfitness-modal-subtitle text-muted mb-0">
-            Plataforma SaaS para gimnasios, entrenadores y atletas (Web + Mobile + Cloud Backend con IA)
+            Plataforma Web SaaS para gimnasios + App Móvil en Google Play para atletas
           </p>
         </div>
         <button
@@ -397,62 +397,50 @@ function AllFitnessModal({ show, onHide, initialFullscreen = false }) {
             {/* TAB 1: OVERVIEW */}
             {activeTab === "overview" && (
               <div className="allfitness-tab-pane">
-                <h4 className="text-white mb-3">
-                  Revolución Digital para Centros de Fitness y Atletas
+                <h4 className="text-white mb-2">
+                  Digitalización Completa para Gimnasios y Atletas
                 </h4>
-                <p className="text-white-50 leading-relaxed">
-                  <strong>AllFitness</strong> nació para resolver la desconexión existente entre la
-                  administración de centros de fitness y la experiencia real de entrenamiento del
-                  socio. Tradicionalmente, los gimnasios sufren por control de acceso rudimentario,
-                  planes impresos en papel que se extravían y falta de métricas de retención,
-                  mientras que los atletas no pueden medir con rigor su sobrecarga progresiva.
+                <p className="text-white-50 mb-3">
+                  <strong>AllFitness</strong> conecta la administración del gimnasio con el entrenamiento diario del socio en una sola plataforma en producción (Web + Google Play).
                 </p>
 
                 {/* Problem vs Solution Grid */}
-                <h5 className="purple mt-4 mb-3">💡 Problema vs. Solución AllFitness</h5>
+                <h5 className="text-info mt-3 mb-3">💡 Qué Problema Resuelve</h5>
                 <Row className="g-3">
                   <Col md={6}>
                     <div className="allfitness-card-box p-3 h-100">
-                      <div className="text-danger fw-bold mb-2">❌ En Gimnasios Tradicionales</div>
+                      <div className="text-danger fw-bold mb-2">❌ Antes (Gimnasios Tradicionales)</div>
                       <ul className="text-white-50 small mb-0 ps-3">
                         <li className="mb-2">
-                          <strong>Rutinas en papel o notas estáticas:</strong> Se pierden con
-                          facilidad y no permiten medir la sobrecarga progresiva ni el volumen real.
+                          <strong>Rutinas en papel o PDF:</strong> Se pierden y el socio no sabe cuánto peso subió la semana pasada.
                         </li>
                         <li className="mb-2">
-                          <strong>Pérdida de tiempo para los coaches:</strong> Horas invertidas
-                          creando rutinas manuales, repetitivas y genéricas.
+                          <strong>Coaches saturados:</strong> Horas perdidas armando rutinas repetitivas a mano.
                         </li>
                         <li className="mb-2">
-                          <strong>Falta de analítica gerencial:</strong> Desconocimiento de aforo en
-                          horas pico, retención de socios y vencimientos de suscripción.
+                          <strong>Control a ciegas:</strong> Sin datos claros de asistencias, renovaciones ni ingresos del mes.
                         </li>
                         <li>
-                          <strong>Hardware costoso de acceso:</strong> Torniquetes y lectores caros
-                          difíciles de mantener e integrar.
+                          <strong>Torniquetes costosos:</strong> Equipos de acceso caros de comprar y mantener.
                         </li>
                       </ul>
                     </div>
                   </Col>
                   <Col md={6}>
                     <div className="allfitness-card-box p-3 h-100 highlight-border">
-                      <div className="purple fw-bold mb-2">✅ La Solución AllFitness</div>
+                      <div className="text-success fw-bold mb-2">✅ Con AllFitness (En Producción)</div>
                       <ul className="text-white-50 small mb-0 ps-3">
                         <li className="mb-2">
-                          <strong>App Móvil con Live Tracker:</strong> Registro ágil en tiempo real de
-                          series, peso, RPE, descansos y cálculo automático de 1RM.
+                          <strong>App Móvil en Google Play:</strong> Registra series, pesos y récords en vivo (incluso sin internet).
                         </li>
                         <li className="mb-2">
-                          <strong>Generador con IA (OpenAI):</strong> Creación inteligente de
-                          splits balanceados y rutinas en segundos según el equipo disponible.
+                          <strong>Rutinas con IA en segundos:</strong> OpenAI genera planes personalizados según las máquinas del gimnasio.
                         </li>
                         <li className="mb-2">
-                          <strong>Dashboard SaaS en tiempo real:</strong> Analítica visual de
-                          ingresos, volumen de asistencias y control de membresías.
+                          <strong>Panel Web Gerencial:</strong> Control de socios, cobros, agenda y gráficas en tiempo real.
                         </li>
                         <li>
-                          <strong>Acceso QR con WebAssembly:</strong> Escaneo veloz en navegador
-                          usando cámaras estándar sin necesidad de hardware dedicado.
+                          <strong>Acceso QR sin hardware extra:</strong> Escaneo instantáneo usando cualquier cámara web en recepción.
                         </li>
                       </ul>
                     </div>
@@ -460,35 +448,32 @@ function AllFitnessModal({ show, onHide, initialFullscreen = false }) {
                 </Row>
 
                 {/* Ecosystem Triad */}
-                <h5 className="purple mt-4 mb-3">🏛️ Tres Pilares del Ecosistema</h5>
+                <h5 className="text-info mt-4 mb-3">🏛️ Los 3 Módulos del Producto</h5>
                 <Row className="g-3">
                   <Col md={4}>
                     <div className="allfitness-feature-pill p-3 h-100 text-center">
                       <div className="fs-3 mb-2">🌐</div>
                       <h6 className="text-white">Panel Web SaaS</h6>
                       <p className="text-white-50 small mb-0">
-                        Angular 13, lector QR WASM, gestión de socios, agenda FullCalendar y
-                        dashboard gerencial en tiempo real.
+                        Control de membresías, lector QR en navegador, agenda de citas y métricas de ingresos.
                       </p>
                     </div>
                   </Col>
                   <Col md={4}>
                     <div className="allfitness-feature-pill p-3 h-100 text-center">
                       <div className="fs-3 mb-2">📱</div>
-                      <h6 className="text-white">App Móvil Atleta</h6>
+                      <h6 className="text-white">App en Google Play</h6>
                       <p className="text-white-50 small mb-0">
-                        Flutter & Riverpod con arquitectura offline-first, cálculo de 1RM, heatmap
-                        muscular interactivo y videos locales.
+                        Funciona sin internet, calcula récords de fuerza (1RM), muestra mapa muscular y videos de técnica.
                       </p>
                     </div>
                   </Col>
                   <Col md={4}>
                     <div className="allfitness-feature-pill p-3 h-100 text-center">
                       <div className="fs-3 mb-2">⚙️</div>
-                      <h6 className="text-white">Backend Cloud & IA</h6>
+                      <h6 className="text-white">Cloud & Motor IA</h6>
                       <p className="text-white-50 small mb-0">
-                        Node.js multi-tenant, MongoDB con 22+ esquemas, motor OpenAI GPT para
-                        rutinas, AWS S3 y seguridad JWT/RBAC.
+                        Soporta múltiples gimnasios de forma independiente, almacenamiento en AWS S3 e IA con OpenAI.
                       </p>
                     </div>
                   </Col>

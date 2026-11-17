@@ -1,28 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Badge from "react-bootstrap/Badge";
-import { FaImages, FaExternalLinkAlt, FaGlassCheers } from "react-icons/fa";
+import {
+  FaExternalLinkAlt,
+  FaGlassCheers,
+  FaCheckCircle,
+  FaCode,
+  FaChevronDown,
+  FaChevronUp,
+  FaPlay,
+} from "react-icons/fa";
 import coverReal from "../../Assets/MyProyects/Velisse-Invitaciones/boda_real_cover.webp";
 
-function VelisseCard({ onOpenModal }) {
+function VelisseCard() {
   const publicUrl = process.env.PUBLIC_URL || "";
+  const [showTech, setShowTech] = useState(false);
 
   return (
     <Card className="project-card-view velisse-card-highlight">
-      {/* Featured Header Badge */}
-      <div className="velisse-card-topbar d-flex justify-content-center align-items-center p-2">
+      {/* Featured Header Badge with PWA Highlight */}
+      <div className="velisse-card-topbar d-flex justify-content-between align-items-center px-3 py-2">
         <Badge className="velisse-badge-featured">
-          ⭐ SAAS EVENT TECH
+          ✨ SAAS EVENT TECH & PWA • DEMOS EN VIVO
         </Badge>
+        <span className="project-status-pill">
+          <span className="status-dot-live"></span> PWA Instalable
+        </span>
       </div>
 
-      {/* Card Image with click-to-open */}
-      <div
-        className="velisse-card-img-wrapper"
-        onClick={() => onOpenModal("royal")}
-        title="Haz clic para ver el proyecto y probar las demos interactivas"
-      >
+      {/* Card Image */}
+      <div className="velisse-card-img-wrapper">
         <Card.Img
           variant="top"
           src={coverReal}
@@ -30,41 +38,116 @@ function VelisseCard({ onOpenModal }) {
           className="velisse-card-img"
         />
         <div className="velisse-img-hover-hint">
-          <FaImages className="me-1" /> Ver Proyecto
+          ⚡ Progressive Web App • 3 Experiencias en Vivo
         </div>
       </div>
 
-      <Card.Body className="d-flex flex-column justify-content-between">
+      <Card.Body className="d-flex flex-column justify-content-between p-4">
         <div>
-          <Card.Title className="d-flex align-items-center justify-content-center gap-2 mb-2 velisse-card-title">
-            <FaGlassCheers className="velisse-gold" />
-            <span>Velisse — EventPass SaaS</span>
+          <Card.Title className="project-card-modern-title d-flex align-items-center gap-2 mb-2">
+            <FaGlassCheers className="velisse-gold flex-shrink-0" />
+            <span>Velisse — Plataforma SaaS de Eventos & PWA</span>
           </Card.Title>
 
-          {/* Tech badges strip */}
-          <div className="velisse-card-tags mb-3 d-flex flex-wrap justify-content-center gap-1">
-            <span className="velisse-mini-pill">Angular 13+</span>
-            <span className="velisse-mini-pill">TypeScript</span>
-            <span className="velisse-mini-pill">RxJS</span>
-            <span className="velisse-mini-pill">GSAP</span>
-            <span className="velisse-mini-pill">WhatsApp API</span>
-            <span className="velisse-mini-pill">html5-qrcode</span>
-            <span className="velisse-mini-pill">Stripe</span>
-            <span className="velisse-mini-pill">Gemini AI</span>
-            <span className="velisse-mini-pill">AWS S3</span>
+          {/* 1-Sentence Clear Value Proposition */}
+          <p className="project-card-summary mb-3">
+            Ecosistema SaaS y <strong>Progressive Web App (PWA)</strong> que transforma invitaciones estáticas en experiencias interactivas con pases QR offline, mapa de mesas y RSVP en WhatsApp.
+          </p>
+
+          {/* 3 Scannable Impact Bullets */}
+          <ul className="project-impact-list mb-3">
+            <li className="project-impact-item">
+              <FaCheckCircle className="impact-check-icon" />
+              <span>
+                <strong>Arquitectura PWA Instalable:</strong> acceso instantáneo con Service Workers, caché de boletos QR sin internet y experiencia nativa móvil.
+              </span>
+            </li>
+            <li className="project-impact-item">
+              <FaCheckCircle className="impact-check-icon" />
+              <span>
+                <strong>Confirmación WhatsApp 1-Clic & Seating Chart:</strong> asignación visual de mesas y escáner QR en puerta desde el navegador.
+              </span>
+            </li>
+            <li className="project-impact-item">
+              <FaCheckCircle className="impact-check-icon" />
+              <span>
+                <strong>Motor de Plantillas + IA (Gemini):</strong> animaciones GSAP de alta costura, música inmersiva y modo Stories vertical.
+              </span>
+            </li>
+          </ul>
+
+          {/* Clean Tech Stack Pills */}
+          <div className="velisse-card-tags mb-3 d-flex flex-wrap gap-1">
+            <span className="project-modern-pill">Angular 13+</span>
+            <span className="project-modern-pill">PWA & Service Workers</span>
+            <span className="project-modern-pill">TypeScript & RxJS</span>
+            <span className="project-modern-pill">GSAP & AOS</span>
+            <span className="project-modern-pill">WhatsApp Cloud API</span>
+            <span className="project-modern-pill">HTML5 QR & Canvas</span>
+            <span className="project-modern-pill">Stripe</span>
+            <span className="project-modern-pill">Gemini IA</span>
           </div>
 
-          <Card.Text style={{ textAlign: "justify", fontSize: "0.91rem", lineHeight: "1.5" }}>
-            Plataforma SaaS end-to-end para gestión integral de eventos e invitaciones interactivas.
-            Reemplaza las tradicionales invitaciones estáticas en PDF con plantillas web dinámicas (SPA),
-            confirmación inteligente (RSVP) por WhatsApp, Seating Chart visual interactivo para distribución de mesas
-            y control de accesos en puerta mediante escaneo QR en tiempo real con la cámara del navegador.
-          </Card.Text>
+          {/* Deep Technical Architecture Drawer */}
+          <div className="project-tech-drawer-wrap mb-2">
+            <button
+              type="button"
+              className="project-tech-toggle-btn"
+              onClick={() => setShowTech(!showTech)}
+            >
+              <FaCode className="me-1 text-info" />
+              <span>
+                {showTech ? "Ocultar arquitectura técnica" : "Ver arquitectura técnica detallada"}
+              </span>
+              {showTech ? <FaChevronUp className="ms-auto" /> : <FaChevronDown className="ms-auto" />}
+            </button>
+            {showTech && (
+              <div className="project-tech-drawer-body mt-2">
+                <div className="tech-spec-row">
+                  <span className="tech-spec-label">Patrón & Runtime:</span>
+                  <span className="tech-spec-val">
+                    Single Page Application (SPA) + <strong>Progressive Web App (PWA)</strong> gobernada por <code>UniversalInvitationRuntime</code> para inyectar datos, audio y temas en +20 plantillas.
+                  </span>
+                </div>
+                <div className="tech-spec-row">
+                  <span className="tech-spec-label">Frontend, PWA & UI:</span>
+                  <span className="tech-spec-val">
+                    Angular 13+, TypeScript, RxJS (<code>Observables</code> / <code>BehaviorSubject</code>), Web App Manifest & Service Workers (caché local de pases e imágenes), animaciones con GSAP, AOS y <code>canvas-confetti</code>.
+                  </span>
+                </div>
+                <div className="tech-spec-row">
+                  <span className="tech-spec-label">Motores Cliente & QR:</span>
+                  <span className="tech-spec-val">
+                    Renderizado masivo de pases gráficos con QR en el navegador mediante <code>html2canvas</code> + empaquetado asíncrono en <code>JSZip</code> (cero carga en servidor), y escáner en recepción con <code>html5-qrcode</code>.
+                  </span>
+                </div>
+                <div className="tech-spec-row">
+                  <span className="tech-spec-label">Cloud, Pagos & IA:</span>
+                  <span className="tech-spec-val">
+                    Integración con Google Gemini AI para generación asistida de diseño, WhatsApp Cloud API para envíos y confirmaciones, pasarela Stripe y almacenamiento en AWS S3.
+                  </span>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
-        {/* Action Buttons: 3 Demos First (Primary Color), then Ver Proyecto below */}
-        <div className="velisse-card-buttons mt-3 d-flex flex-column gap-2">
-          {/* 3 Interactive Demo Buttons carrying primary gold color */}
+        {/* Direct Demo Sections Buttons */}
+        <div className="velisse-card-buttons mt-3 pt-2 d-flex flex-column gap-2">
+          {/* Main Angular SaaS App Button */}
+          <Button
+            href={`${publicUrl}/proyectos/velisse-app/index.html`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="project-btn-primary w-100 d-flex align-items-center justify-content-center gap-2 py-2"
+            title="Abrir plataforma completa de Velisse con catálogo, creador visual y gestión"
+          >
+            <FaPlay size={10} /> Probar Plataforma Completa (SaaS Velisse)
+          </Button>
+
+          <div className="text-white-50 mt-1" style={{ fontSize: "0.73rem", fontWeight: 600 }}>
+            EXPLORAR EXPERIENCIAS DE INVITACIÓN EN VIVO:
+          </div>
           <div className="d-flex justify-content-center gap-2 flex-wrap">
             <Button
               href={`${publicUrl}/velisse-demos/royal-cinematic.html`}
@@ -84,25 +167,16 @@ function VelisseCard({ onOpenModal }) {
             >
               <FaExternalLinkAlt className="me-1" /> Demo Maison
             </Button>
+            <Button
+              href={`${publicUrl}/velisse-demos/story-vertical.html`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="velisse-demo-main-btn flex-fill"
+              title="Abrir demo interactiva Story Vertical en nueva pestaña"
+            >
+              <FaExternalLinkAlt className="me-1" /> Demo Story
+            </Button>
           </div>
-
-          <Button
-            href={`${publicUrl}/velisse-demos/story-vertical.html`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="velisse-demo-main-btn w-100"
-            title="Abrir demo interactiva Story Vertical en nueva pestaña"
-          >
-            <FaExternalLinkAlt className="me-1" /> Demo Story
-          </Button>
-
-          {/* Ver Proyecto button placed below */}
-          <Button
-            onClick={() => onOpenModal("royal")}
-            className="velisse-ver-proyecto-btn w-100 mt-1"
-          >
-            <FaImages className="me-1" /> Ver Proyecto
-          </Button>
         </div>
       </Card.Body>
     </Card>

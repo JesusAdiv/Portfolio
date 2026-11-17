@@ -8,7 +8,13 @@ import {
   SiPhp,
   SiExpress,
   SiMysql,
+  SiOpenai,
+  SiAmazonaws,
+  SiPwa,
+  SiSqlite,
+  SiReactivex,
 } from "react-icons/si";
+import { FaBrain, FaChartBar } from "react-icons/fa";
 
 import Javascript from "../../Assets/TechIcons/Javascript.svg";
 import Typescript from "../../Assets/TechIcons/Typescript.svg";
@@ -23,79 +29,111 @@ import Redux from "../../Assets/TechIcons/Redux.svg";
 
 function Techstack() {
   return (
-    <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
-      {/* Lenguajes & Frontend */}
-      <Col xs={4} md={2} className="tech-icons">
-        <img src={Javascript} alt="Javascript" />
-        <div className="tech-icons-text">JavaScript</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <img src={Typescript} alt="TypeScript" />
-        <div className="tech-icons-text">TypeScript</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <img src={ReactIcon} alt="React" />
+    <Row style={{ justifyContent: "center", paddingBottom: "40px" }}>
+      {/* Lenguajes, Web, Mobile & PWA */}
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <img src={ReactIcon} alt="React" className="tech-icon-images" />
         <div className="tech-icons-text">React.js</div>
       </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiAngular fontSize={"24px"} />
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <SiAngular fontSize={"22px"} className="text-danger" />
         <div className="tech-icons-text">Angular</div>
       </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiFlutter fontSize={"24px"} />
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <img src={Typescript} alt="TypeScript" className="tech-icon-images" />
+        <div className="tech-icons-text">TypeScript</div>
+      </Col>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <img src={Javascript} alt="Javascript" className="tech-icon-images" />
+        <div className="tech-icons-text">JavaScript (ES6+)</div>
+      </Col>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <SiFlutter fontSize={"22px"} className="text-info" />
         <div className="tech-icons-text">Flutter</div>
       </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiDart fontSize={"24px"} />
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <SiDart fontSize={"22px"} className="text-info" />
         <div className="tech-icons-text">Dart</div>
       </Col>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <SiPwa fontSize={"24px"} style={{ color: "#38bdf8" }} />
+        <div className="tech-icons-text">PWA (Service Workers)</div>
+      </Col>
 
-      {/* Backend & Frameworks */}
-      <Col xs={4} md={2} className="tech-icons">
-        <img src={Node} alt="Node.js" />
+      {/* Backend, APIs & Estado Reactivo */}
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <img src={Node} alt="Node.js" className="tech-icon-images" />
         <div className="tech-icons-text">Node.js</div>
       </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiExpress fontSize={"24px"} />
-        <div className="tech-icons-text">Express.js</div>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <SiExpress fontSize={"22px"} />
+        <div className="tech-icons-text">Express & REST API</div>
       </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiPhp fontSize={"24px"} />
-        <div className="tech-icons-text">PHP</div>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <SiReactivex fontSize={"22px"} className="text-danger" />
+        <div className="tech-icons-text">RxJS</div>
       </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <SiLaravel fontSize={"24px"} />
-        <div className="tech-icons-text">Laravel</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <img src={Python} alt="Python" />
-        <div className="tech-icons-text">Python</div>
-      </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <img src={C} alt="C++" />
-        <div className="tech-icons-text">C++</div>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <img src={Redux} alt="Redux" className="tech-icon-images" />
+        <div className="tech-icons-text">Riverpod / Redux</div>
       </Col>
 
-      {/* Bases de Datos & Estado/UI */}
-      <Col xs={4} md={2} className="tech-icons">
-        <SiMysql fontSize={"24px"} />
-        <div className="tech-icons-text">MySQL</div>
+      {/* Inteligencia Artificial & Ciencia de Datos */}
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <SiOpenai fontSize={"22px"} className="text-success" />
+        <div className="tech-icons-text">OpenAI API & Codex</div>
       </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <img src={Mongo} alt="MongoDB" />
-        <div className="tech-icons-text">MongoDB</div>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <FaBrain fontSize={"22px"} style={{ color: "#d97757" }} />
+        <div className="tech-icons-text">Claude AI & Gemini</div>
       </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <img src={SQL} alt="SQL" />
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <img src={Python} alt="Python" className="tech-icon-images" />
+        <div className="tech-icons-text">Python</div>
+      </Col>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <FaChartBar fontSize={"22px"} className="text-info" />
+        <div className="tech-icons-text">Data Science & Chart.js</div>
+      </Col>
+
+      {/* Bases de Datos & Cloud */}
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <img src={SQL} alt="SQL" className="tech-icon-images" />
         <div className="tech-icons-text">PostgreSQL / SQL</div>
       </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <img src={Tailwind} alt="Tailwind CSS" />
-        <div className="tech-icons-text">Tailwind CSS</div>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <SiMysql fontSize={"22px"} className="text-info" />
+        <div className="tech-icons-text">MySQL</div>
       </Col>
-      <Col xs={4} md={2} className="tech-icons">
-        <img src={Redux} alt="Redux" />
-        <div className="tech-icons-text">Redux</div>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <img src={Mongo} alt="MongoDB" className="tech-icon-images" />
+        <div className="tech-icons-text">MongoDB</div>
+      </Col>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <SiSqlite fontSize={"22px"} className="text-info" />
+        <div className="tech-icons-text">SQLite (Offline-First)</div>
+      </Col>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <SiAmazonaws fontSize={"22px"} className="text-warning" />
+        <div className="tech-icons-text">AWS (S3 & CloudFront)</div>
+      </Col>
+
+      {/* Otros Lenguajes & Estilos */}
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <SiLaravel fontSize={"22px"} className="text-danger" />
+        <div className="tech-icons-text">Laravel</div>
+      </Col>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <SiPhp fontSize={"22px"} style={{ color: "#8892be" }} />
+        <div className="tech-icons-text">PHP</div>
+      </Col>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <img src={Tailwind} alt="Tailwind CSS" className="tech-icon-images" />
+        <div className="tech-icons-text">Tailwind & SCSS</div>
+      </Col>
+      <Col xs={6} sm={4} md={3} lg={2} className="tech-icons">
+        <img src={C} alt="C++" className="tech-icon-images" />
+        <div className="tech-icons-text">C++</div>
       </Col>
     </Row>
   );

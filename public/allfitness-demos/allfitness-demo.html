@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AllFitness SaaS & Mobile App — Demo Interactiva | Jesús Adiv Barroso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #060911;
+      --bg-card: rgba(15, 23, 42, 0.85);
+      --border: rgba(56, 189, 248, 0.25);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --cyan: #0ea5e9;
+      --indigo: #6366f1;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-dark);
+      background-image:
+        radial-gradient(circle at 12% 12%, rgba(14, 165, 233, 0.14), transparent 38%),
+        radial-gradient(circle at 88% 20%, rgba(16, 185, 129, 0.11), transparent 40%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .demo-topbar {
+      background: rgba(6, 9, 17, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-group { display: flex; align-items: center; gap: 12px; }
+
+    .brand-emblem {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--emerald), var(--cyan));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 800; font-size: 1.05rem; color: #02100b;
+      box-shadow: 0 6px 18px rgba(16, 185, 129, 0.35);
+    }
+
+    .brand-title {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700;
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+
+    .pill-green {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+      background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399; padding: 2px 8px; border-radius: 20px; font-weight: 600;
+    }
+
+    .pill-cyan {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.68rem;
+      background: rgba(56, 189, 248, 0.15); border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #7dd3fc; padding: 2px 8px; border-radius: 20px;
+    }
+
+    .brand-sub { font-size: 0.76rem; color: var(--text-muted); }
+
+    .nav-tabs-bar { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-subtle);
+      color: #cbd5e1; padding: 8px 14px; border-radius: 8px; font-size: 0.82rem;
+      font-weight: 600; cursor: pointer; transition: all 0.2s ease; font-family: inherit;
+    }
+
+    .tab-btn:hover { border-color: var(--cyan); color: #fff; }
+    .tab-btn.active {
+      background: linear-gradient(135deg, var(--cyan), var(--indigo));
+      border-color: transparent; color: #fff;
+      box-shadow: 0 4px 15px rgba(14, 165, 233, 0.35);
+    }
+
+    .ext-links { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .ext-btn {
+      background: rgba(255, 255, 255, 0.06); border: 1px solid var(--border-subtle);
+      color: #e2e8f0; text-decoration: none; font-size: 0.76rem; font-weight: 600;
+      padding: 7px 11px; border-radius: 8px; transition: all 0.2s;
+    }
+
+    .ext-btn:hover { border-color: var(--emerald); color: #fff; background: rgba(16, 185, 129, 0.15); }
+
+    .workspace { max-width: 1280px; width: 100%; margin: 0 auto; padding: 24px; flex: 1; }
+    .view-section { display: none; animation: fadeIn 0.25s ease; }
+    .view-section.active { display: block; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    .kpi-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px; margin-bottom: 22px;
+    }
+
+    .kpi-card {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: 14px; padding: 18px; border-left: 4px solid var(--cyan);
+    }
+
+    .kpi-label { font-size: 0.74rem; color: var(--text-muted); font-family: 'JetBrains Mono', monospace; }
+    .kpi-val { font-family: 'Space Grotesk', sans-serif; font-size: 1.7rem; font-weight: 700; margin: 6px 0 4px; }
+    .kpi-sub { font-size: 0.76rem; color: #34d399; font-weight: 600; }
+
+    .grid-2col { display: grid; grid-template-columns: 1.25fr 1fr; gap: 20px; }
+    @media (max-width: 960px) { .grid-2col { grid-template-columns: 1fr; } }
+
+    .panel-box {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: 14px; padding: 20px;
+    }
+
+    .panel-title {
+      font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 700;
+      margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center;
+    }
+
+    .action-btn {
+      background: linear-gradient(135deg, var(--cyan), var(--indigo));
+      border: none; color: #fff; font-weight: 700; font-size: 0.82rem;
+      padding: 9px 14px; border-radius: 8px; cursor: pointer; font-family: inherit;
+    }
+
+    .action-btn:hover { opacity: 0.92; }
+
+    .form-select {
+      width: 100%; background: #090d18; border: 1px solid var(--border);
+      color: #fff; padding: 9px 12px; border-radius: 8px; font-family: inherit; font-size: 0.85rem;
+    }
+
+    .code-box {
+      background: #04070e; border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 10px; padding: 14px; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.76rem; color: #7dd3fc; overflow-x: auto; white-space: pre; line-height: 1.5;
+    }
+
+    .set-row {
+      display: grid; grid-template-columns: 50px 1fr 1fr 1fr 90px;
+      gap: 10px; align-items: center; padding: 10px;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle);
+      border-radius: 8px; margin-bottom: 8px; font-size: 0.84rem;
+    }
+
+    .muscle-pill {
+      padding: 8px 12px; border-radius: 8px; border: 1px solid var(--border-subtle);
+      background: rgba(255, 255, 255, 0.04); color: #cbd5e1; cursor: pointer;
+      font-size: 0.8rem; font-weight: 600; transition: all 0.2s;
+    }
+
+    .muscle-pill.hot {
+      background: rgba(239, 68, 68, 0.22); border-color: #ef4444; color: #fca5a5;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="demo-topbar">
+    <div class="brand-group">
+      <div class="brand-emblem">AF</div>
+      <div>
+        <div class="brand-title">
+          <span>AllFitness — Ecosistema Web SaaS & App Móvil</span>
+          <span class="pill-green">✓ En Google Play</span>
+          <span class="pill-cyan">Angular • Flutter • Node.js • OpenAI • AWS</span>
+        </div>
+        <div class="brand-sub">Simulador interactivo de los módulos de Gimnasio (Web SaaS), Motor IA y App del Atleta</div>
+      </div>
+    </div>
+
+    <div class="nav-tabs-bar">
+      <button class="tab-btn active" onclick="switchTab('saas', this)">🌐 1. Panel Web SaaS & QR (WASM)</button>
+      <button class="tab-btn" onclick="switchTab('ai', this)">🤖 2. Generador de Rutinas IA (OpenAI)</button>
+      <button class="tab-btn" onclick="switchTab('mobile', this)">📱 3. App Móvil (1RM, Offline & Heatmap)</button>
+    </div>
+
+    <div class="ext-links">
+      <a href="https://www.allfitness.com.mx/#/home" target="_blank" rel="noopener noreferrer" class="ext-btn">🌐 Web Oficial ↗</a>
+      <a href="https://play.google.com/store/apps/details?id=com.kyndrasoft.allfitness&pcampaignid=web_share" target="_blank" rel="noopener noreferrer" class="ext-btn">▶️ Google Play ↗</a>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <!-- TAB 1: WEB SAAS & QR CHECK-IN -->
+    <section id="tab-saas" class="view-section active">
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">SOCIOS ACTIVOS (MULTI-TENANT)</div>
+          <div class="kpi-val" id="kpi-members">418 Socios</div>
+          <div class="kpi-sub">Gym ID: #GYM-IRON-01 • Aislamiento JWT</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">AFORO EN SALA EN TIEMPO REAL</div>
+          <div class="kpi-val" id="kpi-checkin">64 Atletas</div>
+          <div class="kpi-sub">Capacidad óptima (53%) • Horario Pico</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">INGRESOS MENSUALES</div>
+          <div class="kpi-val">$184,500 MXN</div>
+          <div class="kpi-sub">94% renovaciones al día</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">LECTOR QR EN NAVEGADOR</div>
+          <div class="kpi-val">60 FPS</div>
+          <div class="kpi-sub" style="color:#7dd3fc;">Acelerado con WebAssembly (Sin torniquetes)</div>
+        </div>
+      </div>
+
+      <div class="grid-2col">
+        <div class="panel-box">
+          <div class="panel-title">
+            <span>Simulador de Control de Acceso QR en Recepción</span>
+            <span class="pill-cyan">ngx-scanner-qrcode • WASM</span>
+          </div>
+          <p style="font-size:0.84rem;color:var(--text-muted);margin-bottom:14px;">
+            En producción, cualquier webcam en recepción decodifica el QR dinámico de la app móvil del socio usando <strong>WebAssembly</strong> sin requerir torniquetes físicos costosos. Prueba escanear distintos pases:
+          </p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;">
+            <button class="action-btn" onclick="simulateQrScan('Carlos Mendoza', 'Anualidad VIP', 'ACTIVA', 'Vence: 14 Dic 2026', true)">📷 Escanear Socio Activo</button>
+            <button class="action-btn" style="background:rgba(239,68,68,0.2);border:1px solid #ef4444;" onclick="simulateQrScan('Jorge Ramírez', 'Mensualidad Estándar', 'VENCIDA', 'Expiró hace 3 días', false)">📷 Escanear Membresía Vencida</button>
+          </div>
+
+          <div id="qrResultBox" style="padding:16px;border-radius:12px;background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.35);">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+              <strong style="font-size:1rem;color:#34d399;" id="qrStatusTitle">✓ ACCESO AUTORIZADO (12ms WASM Decode)</strong>
+              <span class="pill-green" id="qrBadge">ACTIVA</span>
+            </div>
+            <div style="margin-top:8px;font-size:0.86rem;" id="qrMemberInfo">
+              Socio: <strong>Carlos Mendoza</strong> • Plan: <strong>Anualidad VIP</strong> • Vence: 14 Dic 2026
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-box">
+          <div class="panel-title">
+            <span>Seguridad Multi-Gimnasio (Multi-Tenant Guard)</span>
+            <span class="pill-green">RBAC + JWT</span>
+          </div>
+          <div class="code-box">// Middleware Node.js + Angular GymExistGuard
+{
+  "tenantIsolation": "STRICT_DOCUMENT_LEVEL",
+  "jwtPayload": {
+    "userId": "usr_99481a",
+    "gymId": "gym_iron_temple_01",
+    "role": "GYM_ADMIN"
+  },
+  "storage": "AWS S3 Bucket (s3://allfitness-media/gym_01/)"
+}</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: AI ROUTINE GENERATOR -->
+    <section id="tab-ai" class="view-section">
+      <div class="grid-2col">
+        <div class="panel-box">
+          <div class="panel-title">
+            <span>Diseñador de Rutinas con Inteligencia Artificial</span>
+            <span class="pill-cyan">OpenAI API + Esquema JSON Rígido</span>
+          </div>
+          <div style="display:grid;gap:12px;margin-bottom:16px;">
+            <div>
+              <label style="font-size:0.78rem;color:var(--text-muted);display:block;margin-bottom:4px;">Objetivo del Atleta</label>
+              <select id="aiGoal" class="form-select" onchange="generateAiRoutine()">
+                <option value="hipertrofia">Hipertrofia Muscular & Sobrecarga Progresiva</option>
+                <option value="fuerza">Fuerza Máxima (Powerbuilding 5x5)</option>
+                <option value="recomposicion">Recomposición Corporal & Metabólico</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:0.78rem;color:var(--text-muted);display:block;margin-bottom:4px;">Grupo Muscular (Split)</label>
+              <select id="aiSplit" class="form-select" onchange="generateAiRoutine()">
+                <option value="push">Día de Empuje (Pectoral, Hombro Anterior y Tríceps)</option>
+                <option value="pull">Día de Tracción (Espalda Dorsal, Trapecio y Bíceps)</option>
+                <option value="legs">Tren Inferior (Cuádriceps, Isquiotibiales y Glúteo)</option>
+              </select>
+            </div>
+            <button class="action-btn" onclick="generateAiRoutine()">⚡ Generar Plan Estructurado con OpenAI</button>
+          </div>
+          <div id="aiRoutineList" style="display:grid;gap:8px;"></div>
+        </div>
+
+        <div class="panel-box">
+          <div class="panel-title">
+            <span>Payload Determinista (Sin Alucinaciones)</span>
+            <span class="pill-green">MongoDB Ready</span>
+          </div>
+          <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:10px;">
+            El backend en Node.js inyecta el catálogo real de máquinas del gimnasio en el prompt del sistema y fuerza salida en JSON Schema válido para persistir directo en MongoDB:
+          </p>
+          <div class="code-box" id="aiJsonOutput"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: MOBILE APP (1RM, OFFLINE, HEATMAP) -->
+    <section id="tab-mobile" class="view-section">
+      <div class="grid-2col">
+        <div class="panel-box">
+          <div class="panel-title">
+            <span>Live Workout Tracker & Cálculo de 1RM en Vivo</span>
+            <span class="pill-green" id="offlineStatusPill">📶 Online (Sincronizado)</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;flex-wrap:wrap;gap:8px;">
+            <span style="font-size:0.84rem;color:var(--text-muted);">Ejercicio Activo: <strong>Press de Banca con Barra Olímpica</strong></span>
+            <button class="tab-btn" onclick="toggleOfflineMode()" id="btnToggleOffline">🔌 Simular Sótano Sin Internet (Offline-First)</button>
+          </div>
+
+          <div class="set-row" style="font-weight:700;color:var(--text-muted);background:none;border:none;">
+            <span>Serie</span><span>Peso (kg)</span><span>Reps</span><span>1RM Estimado</span><span>Estado</span>
+          </div>
+
+          <div class="set-row">
+            <span>#1</span>
+            <input type="number" id="w1" value="80" class="form-select" oninput="recalc1RM()" />
+            <input type="number" id="r1" value="10" class="form-select" oninput="recalc1RM()" />
+            <strong id="rm1" style="color:#7dd3fc;">106.7 kg</strong>
+            <span class="pill-green">✓ Guardado</span>
+          </div>
+
+          <div class="set-row">
+            <span>#2</span>
+            <input type="number" id="w2" value="90" class="form-select" oninput="recalc1RM()" />
+            <input type="number" id="r2" value="8" class="form-select" oninput="recalc1RM()" />
+            <strong id="rm2" style="color:#34d399;">114.0 kg (PR)</strong>
+            <span class="pill-green" id="syncBadge2">✓ Guardado</span>
+          </div>
+
+          <div id="offlineQueueNotice" style="display:none;margin-top:12px;padding:12px;border-radius:10px;background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.4);font-size:0.8rem;color:#fbbf24;">
+            ⚡ <strong>SincronizadorOffline (SQLite Local Activo):</strong> Sin conexión a internet. Las series se guardan en SQLite local con timestamp y se despacharán automáticamente cuando regrese la red.
+          </div>
+        </div>
+
+        <div class="panel-box">
+          <div class="panel-title">
+            <span>Heatmap Muscular Anatómico (muscle_selector)</span>
+            <span class="pill-cyan">Fork Open Source en Flutter</span>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:12px;">
+            Toca los grupos musculares para simular el cálculo de volumen semanal e intensidad cromática (Heatmap) renderizado en Flutter:
+          </p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
+            <button class="muscle-pill hot" onclick="toggleMuscle(this)">🔥 Pectoral Mayor (16 series • Alta Activación)</button>
+            <button class="muscle-pill hot" onclick="toggleMuscle(this)">🔥 Deltoides Anterior (12 series)</button>
+            <button class="muscle-pill" onclick="toggleMuscle(this)">⚡ Tríceps Braquial (10 series)</button>
+            <button class="muscle-pill" onclick="toggleMuscle(this)">⚡ Dorsal Ancho (14 series)</button>
+            <button class="muscle-pill" onclick="toggleMuscle(this)">⚡ Cuádriceps Femoral (16 series)</button>
+          </div>
+          <div class="code-box">// JesusAdiv/muscle_selector (Flutter CustomPainter)
+MuscleSelectorMap(
+  selectedGroups: activeGroups,
+  heatmapIntensity: VolumeCalculator.computeIntensity(sets),
+  enableFrontAndBackView: true,
+)</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function switchTab(id, btn) {
+      document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + id).classList.add('active');
+      if (btn) btn.classList.add('active');
+    }
+
+    function simulateQrScan(name, plan, status, exp, ok) {
+      const box = document.getElementById('qrResultBox');
+      const title = document.getElementById('qrStatusTitle');
+      const badge = document.getElementById('qrBadge');
+      const info = document.getElementById('qrMemberInfo');
+      if (ok) {
+        box.style.background = "rgba(16,185,129,0.1)";
+        box.style.borderColor = "rgba(16,185,129,0.35)";
+        title.style.color = "#34d399";
+        title.textContent = "✓ ACCESO AUTORIZADO (11ms WASM Decode)";
+        badge.textContent = status;
+      } else {
+        box.style.background = "rgba(239,68,68,0.12)";
+        box.style.borderColor = "rgba(239,68,68,0.4)";
+        title.style.color = "#f87171";
+        title.textContent = "✕ ACCESO DENEGADO — RENOVACIÓN REQUERIDA";
+        badge.textContent = status;
+      }
+      info.innerHTML = `Socio: <strong>${name}</strong> • Plan: <strong>${plan}</strong> • ${exp}`;
+    }
+
+    function generateAiRoutine() {
+      const goal = document.getElementById('aiGoal').value;
+      const split = document.getElementById('aiSplit').value;
+      const routines = {
+        push: [
+          { ex: "Press de Banca Inclinado con Mancuernas", sets: 4, reps: "8-10", rir: "RIR 1", muscle: "Pectoral Superior" },
+          { ex: "Press Militar en Máquina Convergente", sets: 4, reps: "10-12", rir: "RIR 2", muscle: "Deltoides Anterior" },
+          { ex: "Extensión de Tríceps en Polea Alta con Cuerda", sets: 3, reps: "12-15", rir: "RIR 0", muscle: "Tríceps Lateral" }
+        ],
+        pull: [
+          { ex: "Jalón al Pecho Agarre Neutro", sets: 4, reps: "8-10", rir: "RIR 1", muscle: "Dorsal Ancho" },
+          { ex: "Remo con Barra T Apoyado al Pecho", sets: 4, reps: "10", rir: "RIR 1", muscle: "Espalda Media" },
+          { ex: "Curl de Bíceps en Banco Scott", sets: 3, reps: "12", rir: "RIR 1", muscle: "Bíceps Braquial" }
+        ],
+        legs: [
+          { ex: "Sentadilla Hack Squat Profunda", sets: 4, reps: "8-10", rir: "RIR 1", muscle: "Cuádriceps" },
+          { ex: "Peso Muerto Rumano con Barra", sets: 4, reps: "10", rir: "RIR 2", muscle: "Isquiotibiales" },
+          { ex: "Hip Thrust en Máquina", sets: 3, reps: "12", rir: "RIR 1", muscle: "Glúteo Mayor" }
+        ]
+      }[split];
+
+      document.getElementById('aiRoutineList').innerHTML = routines.map(r => `
+        <div style="padding:10px 12px;background:rgba(255,255,255,0.04);border:1px solid var(--border-subtle);border-radius:8px;display:flex;justify-content:space-between;align-items:center;font-size:0.82rem;">
+          <div><strong>${r.ex}</strong><br><span style="color:var(--text-muted);font-size:0.74rem;">Músculo: ${r.muscle} • Intensidad: ${r.rir}</span></div>
+          <span class="pill-cyan">${r.sets} x ${r.reps}</span>
+        </div>
+      `).join('');
+
+      document.getElementById('aiJsonOutput').textContent = JSON.stringify({
+        model: "gpt-4o-mini",
+        gymCatalogValidated: true,
+        goal: goal.toUpperCase(),
+        split: split.toUpperCase(),
+        exercises: routines
+      }, null, 2);
+    }
+
+    let isOffline = false;
+    function toggleOfflineMode() {
+      isOffline = !isOffline;
+      const pill = document.getElementById('offlineStatusPill');
+      const notice = document.getElementById('offlineQueueNotice');
+      const sync2 = document.getElementById('syncBadge2');
+      if (isOffline) {
+        pill.textContent = "⚡ Offline Mode (Cola SQLite Local)";
+        pill.style.color = "#fbbf24";
+        notice.style.display = "block";
+        sync2.textContent = "⏳ En Cola SQLite";
+      } else {
+        pill.textContent = "📶 Online (Sincronizado)";
+        pill.style.color = "#34d399";
+        notice.style.display = "none";
+        sync2.textContent = "✓ Sincronizado";
+      }
+    }
+
+    function recalc1RM() {
+      const w1 = Number(document.getElementById('w1').value) || 0;
+      const r1 = Number(document.getElementById('r1').value) || 0;
+      const w2 = Number(document.getElementById('w2').value) || 0;
+      const r2 = Number(document.getElementById('r2').value) || 0;
+      const rm1 = (w1 * (1 + r1 / 30)).toFixed(1);
+      const rm2 = (w2 * (1 + r2 / 30)).toFixed(1);
+      document.getElementById('rm1').textContent = `${rm1} kg`;
+      document.getElementById('rm2').textContent = `${rm2} kg ${Number(rm2) >= Number(rm1) ? '(Nuevo PR 🔥)' : ''}`;
+    }
+
+    function toggleMuscle(btn) {
+      btn.classList.toggle('hot');
+    }
+
+    generateAiRoutine();
+  </script>
+</body>
+</html>
