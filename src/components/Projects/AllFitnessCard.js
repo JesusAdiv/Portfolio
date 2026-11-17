@@ -17,7 +17,7 @@ import {
   FaTimes,
   FaRedo,
 } from "react-icons/fa";
-import coverWeb from "../../Assets/MyProyects/AllFitness/Portadaweb.png";
+import allfitnessLogo from "../../Assets/MyProyects/AllFitness/allfitness-logo.png";
 
 function AllFitnessCard({ onOpenModal }) {
   const publicUrl = process.env.PUBLIC_URL || "";
@@ -30,15 +30,15 @@ function AllFitnessCard({ onOpenModal }) {
       <Card className="project-card-view allfitness-card-highlight">
         {/* Featured Header Badge */}
         <div className="allfitness-card-topbar d-flex justify-content-between align-items-center px-3 py-2">
-          <Badge className="allfitness-badge-featured">
-            🚀 EN PRODUCCIÓN • GOOGLE PLAY & WEB SAAS
+          <Badge className="allfitness-badge-featured" title="EN PRODUCCIÓN • GOOGLE PLAY & WEB SAAS">
+            🚀 GOOGLE PLAY & SAAS
           </Badge>
           <span className="project-status-pill">
-            <span className="status-dot-live"></span> Flutter Live App
+            <span className="status-dot-live"></span> Flutter Live
           </span>
         </div>
 
-        {/* Card Image with click-to-open live Flutter simulator */}
+        {/* Card Logo with click-to-open live Flutter simulator */}
         <div
           className="allfitness-card-img-wrapper"
           onClick={() => setShowPhoneSimulator(true)}
@@ -46,8 +46,8 @@ function AllFitnessCard({ onOpenModal }) {
         >
           <Card.Img
             variant="top"
-            src={coverWeb}
-            alt="AllFitness Showcase"
+            src={allfitnessLogo}
+            alt="AllFitness Logo"
             className="allfitness-card-img"
           />
           <div className="allfitness-img-hover-hint">

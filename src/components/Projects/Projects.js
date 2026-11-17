@@ -5,9 +5,9 @@ import AllFitnessCard from "./AllFitnessCard";
 import AllFitnessModal from "./AllFitnessModal";
 import VelisseCard from "./VelisseCard";
 import Particle from "../Particle";
-import { FaFlask, FaFileMedicalAlt, FaClinicMedical } from "react-icons/fa";
 import krakenLogo from "../../Assets/MyProyects/Kraken-store/Logo-Kraken.png";
 import jafraLogo from "../../Assets/MyProyects/Jafra/jafra-logo.png";
+import sinerlabLogo from "../../Assets/MyProyects/CMR-Clinico/sinerlab-logo-white.svg";
 import buapLogo from "../../Assets/MyProyects/Buap/Logo_de_la_BUAP.webp";
 import muscleSelectorImg from "../../Assets/MyProyects/muscleselector/muscleselector.jpg";
 
@@ -28,31 +28,6 @@ function Projects({ embedded = false }) {
     if (activeFilter === "all") return true;
     return categories.includes(activeFilter);
   };
-
-  const cmrCustomVisual = (
-    <div className="cmr-visual-banner d-flex flex-column justify-content-between p-3">
-      <div className="d-flex justify-content-between align-items-center w-100">
-        <span className="cmr-visual-chip">
-          <FaClinicMedical className="me-1" /> Multi-Sucursal
-        </span>
-        <span className="cmr-visual-chip-right">COFEPRIS NOM-007</span>
-      </div>
-      <div className="cmr-visual-center my-2 d-flex align-items-center justify-content-center gap-3">
-        <div className="cmr-icon-orb">
-          <FaFlask />
-        </div>
-        <div className="text-start">
-          <div className="cmr-visual-title">Sinerlab LIS — CRM Clínico</div>
-          <div className="cmr-visual-sub">Recepción → Analítica → Delta Check → jsPDF</div>
-        </div>
-      </div>
-      <div className="d-flex gap-2 justify-content-center">
-        <span className="cmr-step-pill"><FaFileMedicalAlt className="me-1" /> Códigos de Barras</span>
-        <span className="cmr-step-pill">🔬 Validación LIS</span>
-        <span className="cmr-step-pill">💰 POS & Arqueos</span>
-      </div>
-    </div>
-  );
 
   return (
     <Container
@@ -124,7 +99,7 @@ function Projects({ embedded = false }) {
             <Col lg={4} md={6} className="project-card">
               <ProjectCard
                 featuredClass="jafra-card-highlight"
-                category="💼 CRM COMERCIAL & PWA • AWS CLOUDFRONT"
+                category="💼 CRM & PWA • CLOUDFRONT"
                 statusBadge="PWA & Cloud"
                 imgPath={jafraLogo}
                 imgClassName="project-card-img-invert"
@@ -172,11 +147,52 @@ function Projects({ embedded = false }) {
             </Col>
           )}
 
-          {/* 4. Portal de Gestión Académica BUAP */}
+          {/* 4. Sinerlab LIS — Sistema de Información Clínica & CRM */}
+          {showCard(["crm", "saas"]) && (
+            <Col lg={4} md={6} className="project-card">
+              <ProjectCard
+                featuredClass="sinerlab-card-highlight"
+                category="🏥 HEALTHTECH LIS • COFEPRIS"
+                statusBadge="LIS & Mock VIP"
+                imgPath={sinerlabLogo}
+                isBlog={false}
+                title="Sinerlab LIS — Sistema Clínico & CRM"
+                description="Sistema integral de información para laboratorios de análisis clínicos (LIS) y CRM médico diseñado bajo normativas de salud COFEPRIS (NOM-007-SSA3-2011)."
+                highlights={[
+                  "Flujo clínico 360°: recepción con códigos de barras, cotizador en tiempo real y validación analítica con delta check.",
+                  "Control de entregas multicanal (WhatsApp/Email), terminal POS con arqueos auditados y reportes oficiales en jsPDF.",
+                  "Modo Demostración Offline Autónomo VIP con 6+ meses de datos simulados en memoria sin requerir backend."
+                ]}
+                tags={["Angular 11", "TypeScript", "RxJS", "SCSS", "Chart.js", "jsPDF", "html2canvas", "LIMS HealthTech"]}
+                techSpecs={[
+                  {
+                    label: "Patrón & Arquitectura",
+                    value: "Enterprise SaaS HealthTech con base-href './' y Hash Routing agnóstico a servidor, optimizado para auditoría y demostración inmediata."
+                  },
+                  {
+                    label: "Frontend & UI",
+                    value: "Angular 11, TypeScript, RxJS, tema Black Dashboard Pro, componentes ngx-bootstrap, FontAwesome y diseño responsivo."
+                  },
+                  {
+                    label: "BI & Documentación",
+                    value: "Tableros de volumen y tendencias con Chart.js; generación cliente de tickets de arqueo, cotizaciones y reportes COFEPRIS con jsPDF y html2canvas."
+                  },
+                  {
+                    label: "Motor Mock & Estado",
+                    value: "MockBackendInterceptor (HttpInterceptor) y LocalStorage State Engine que interceptan peticiones REST y simulan persistencia completa."
+                  }
+                ]}
+                demoLink={`${publicUrl}/proyectos/sinerlab/index.html`}
+                demoLabel="Probar Demo Sinerlab LIS"
+              />
+            </Col>
+          )}
+
+          {/* 5. Portal de Gestión Académica BUAP */}
           {showCard(["crm"]) && (
             <Col lg={4} md={6} className="project-card">
               <ProjectCard
-                category="🏛️ SISTEMA INSTITUCIONAL & DATA • BUAP"
+                category="🏛️ SISTEMA WEB & DATA • BUAP"
                 statusBadge="Full-Stack & Datos"
                 imgPath={buapLogo}
                 isBlog={false}
@@ -211,52 +227,11 @@ function Projects({ embedded = false }) {
             </Col>
           )}
 
-          {/* 5. Sinerlab LIS — Sistema de Información Clínica & CRM */}
-          {showCard(["crm", "saas"]) && (
-            <Col lg={4} md={6} className="project-card">
-              <ProjectCard
-                featuredClass="sinerlab-card-highlight"
-                category="🏥 HEALTHTECH LIS • COFEPRIS NOM-007"
-                statusBadge="LIS & Mock VIP"
-                customVisual={cmrCustomVisual}
-                isBlog={false}
-                title="Sinerlab LIS — Sistema Clínico & CRM"
-                description="Sistema integral de información para laboratorios de análisis clínicos (LIS) y CRM médico diseñado bajo normativas de salud COFEPRIS (NOM-007-SSA3-2011)."
-                highlights={[
-                  "Flujo clínico 360°: recepción con códigos de barras, cotizador en tiempo real y validación analítica con delta check.",
-                  "Control de entregas multicanal (WhatsApp/Email), terminal POS con arqueos auditados y reportes oficiales en jsPDF.",
-                  "Modo Demostración Offline Autónomo VIP con 6+ meses de datos simulados en memoria sin requerir backend."
-                ]}
-                tags={["Angular 11", "TypeScript", "RxJS", "SCSS", "Chart.js", "jsPDF", "html2canvas", "LIMS HealthTech"]}
-                techSpecs={[
-                  {
-                    label: "Patrón & Arquitectura",
-                    value: "Enterprise SaaS HealthTech con base-href './' y Hash Routing agnóstico a servidor, optimizado para auditoría y demostración inmediata."
-                  },
-                  {
-                    label: "Frontend & UI",
-                    value: "Angular 11, TypeScript, RxJS, tema Black Dashboard Pro, componentes ngx-bootstrap, FontAwesome y diseño responsivo."
-                  },
-                  {
-                    label: "BI & Documentación",
-                    value: "Tableros de volumen y tendencias con Chart.js; generación cliente de tickets de arqueo, cotizaciones y reportes COFEPRIS con jsPDF y html2canvas."
-                  },
-                  {
-                    label: "Motor Mock & Estado",
-                    value: "MockBackendInterceptor (HttpInterceptor) y LocalStorage State Engine que interceptan peticiones REST y simulan persistencia completa."
-                  }
-                ]}
-                demoLink={`${publicUrl}/proyectos/sinerlab/index.html`}
-                demoLabel="Probar Demo Sinerlab LIS"
-              />
-            </Col>
-          )}
-
           {/* 6. Kraken Store */}
           {showCard(["mobile"]) && (
             <Col lg={4} md={6} className="project-card">
               <ProjectCard
-                category="🛒 E-COMMERCE • COMERCIO ELECTRÓNICO"
+                category="🛒 E-COMMERCE • ONLINE"
                 statusBadge="En Operación"
                 imgPath={krakenLogo}
                 isBlog={false}
@@ -295,8 +270,8 @@ function Projects({ embedded = false }) {
           {showCard(["mobile"]) && (
             <Col lg={4} md={6} className="project-card">
               <ProjectCard
-                category="📦 OPEN SOURCE • PAQUETE FLUTTER"
-                statusBadge="GitHub Package"
+                category="📦 OPEN SOURCE • FLUTTER"
+                statusBadge="GitHub Pkg"
                 imgPath={muscleSelectorImg}
                 isBlog={false}
                 title="Muscle Selector — Mapa Anatómico"

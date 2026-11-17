@@ -19,7 +19,7 @@ function ProjectCards(props) {
     <Card className={`project-card-view ${props.featuredClass || ""}`}>
       {/* Top Status & Category Bar */}
       <div className="project-card-topbar d-flex justify-content-between align-items-center px-3 py-2">
-        <span className="project-category-badge">
+        <span className="project-category-badge" title={props.category}>
           {props.category || "PROYECTO REAL"}
         </span>
         {props.statusBadge && (
@@ -30,20 +30,86 @@ function ProjectCards(props) {
         )}
       </div>
 
-      {/* Visual Cover / Image Container */}
+      {/* Visual Cover / Image Container with click-to-open demo */}
       {props.customVisual ? (
-        <div className="project-card-custom-visual">
+        <div
+          className={`project-card-custom-visual ${
+            props.demoLink || props.prodLink || props.ghLink ? "project-card-clickable" : ""
+          }`}
+          onClick={() => {
+            if (props.demoLink) window.open(props.demoLink, "_blank");
+            else if (props.prodLink) window.open(props.prodLink, "_blank");
+            else if (props.ghLink) window.open(props.ghLink, "_blank");
+          }}
+          title={
+            props.demoLink
+              ? (props.demoLabel || "Probar Demo Interactiva")
+              : props.prodLink
+              ? "Abrir en Producción"
+              : props.title
+          }
+        >
           {props.customVisual}
+          {props.demoLink && (
+            <div className="project-card-hover-overlay">
+              <span className="project-card-hover-pill">
+                ⚡ {props.demoLabel || "Probar Demo en Vivo"}
+              </span>
+            </div>
+          )}
         </div>
       ) : (
         props.imgPath && (
-          <div className="project-card-img-container">
+          <div
+            className={`project-card-img-container ${
+              props.demoLink || props.prodLink || props.ghLink || props.instaLink
+                ? "project-card-clickable"
+                : ""
+            }`}
+            onClick={() => {
+              if (props.demoLink) {
+                window.open(props.demoLink, "_blank");
+              } else if (props.prodLink) {
+                window.open(props.prodLink, "_blank");
+              } else if (props.ghLink) {
+                window.open(props.ghLink, "_blank");
+              } else if (props.instaLink) {
+                window.open(props.instaLink, "_blank");
+              }
+            }}
+            title={
+              props.demoLink
+                ? (props.demoLabel || "Probar Demo en Vivo")
+                : props.prodLink
+                ? "Abrir en Producción"
+                : props.ghLink
+                ? "Ver Código en GitHub"
+                : props.instaLink
+                ? "Ver Tienda Online"
+                : props.title
+            }
+          >
             <Card.Img
               variant="top"
               src={props.imgPath}
               alt={props.title}
-              className={props.imgClassName || ""}
+              className={`project-card-logo-img ${props.imgClassName || ""}`}
             />
+            {(props.demoLink || props.prodLink || props.ghLink || props.instaLink) && (
+              <div className="project-card-hover-overlay">
+                <span className="project-card-hover-pill">
+                  {props.demoLink ? (
+                    <>⚡ {props.demoLabel || "Probar Demo en Vivo"}</>
+                  ) : props.prodLink ? (
+                    <>🌐 Abrir Producción</>
+                  ) : props.ghLink ? (
+                    <>📂 Ver Código (GitHub)</>
+                  ) : (
+                    <>🛍️ Ver Tienda Online</>
+                  )}
+                </span>
+              </div>
+            )}
           </div>
         )
       )}

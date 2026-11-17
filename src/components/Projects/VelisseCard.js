@@ -11,7 +11,7 @@ import {
   FaChevronUp,
   FaPlay,
 } from "react-icons/fa";
-import coverReal from "../../Assets/MyProyects/Velisse-Invitaciones/boda_real_cover.webp";
+import velisseLogo from "../../Assets/MyProyects/Velisse-Invitaciones/logo.png";
 
 function VelisseCard() {
   const publicUrl = process.env.PUBLIC_URL || "";
@@ -21,24 +21,28 @@ function VelisseCard() {
     <Card className="project-card-view velisse-card-highlight">
       {/* Featured Header Badge with PWA Highlight */}
       <div className="velisse-card-topbar d-flex justify-content-between align-items-center px-3 py-2">
-        <Badge className="velisse-badge-featured">
-          ✨ SAAS EVENT TECH & PWA • DEMOS EN VIVO
+        <Badge className="velisse-badge-featured" title="SAAS EVENT TECH & PWA • DEMOS EN VIVO">
+          ✨ SAAS & PWA • EVENT TECH
         </Badge>
         <span className="project-status-pill">
           <span className="status-dot-live"></span> PWA Instalable
         </span>
       </div>
 
-      {/* Card Image */}
-      <div className="velisse-card-img-wrapper">
+      {/* Card Logo with click-to-open live demo */}
+      <div
+        className="velisse-card-img-wrapper"
+        onClick={() => window.open(`${publicUrl}/proyectos/velisse-app/index.html`, "_blank")}
+        title="Haz clic para probar la plataforma completa de Velisse en vivo"
+      >
         <Card.Img
           variant="top"
-          src={coverReal}
-          alt="Velisse Showcase"
+          src={velisseLogo}
+          alt="Velisse Logo"
           className="velisse-card-img"
         />
         <div className="velisse-img-hover-hint">
-          ⚡ Progressive Web App • 3 Experiencias en Vivo
+          ⚡ Probar App Velisse en Vivo
         </div>
       </div>
 

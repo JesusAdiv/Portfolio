@@ -149,13 +149,17 @@ button:focus {
   position: relative !important;
   background-color: transparent !important;
   border-color: transparent !important;
+  padding: 4px 6px !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 .navbar-toggler span {
   display: block !important;
   background-color: #38bdf8 !important;
   height: 3px !important;
-  width: 26px !important;
+  width: 24px !important;
   margin-top: 5px !important;
   margin-bottom: 5px !important;
   border-radius: 3px;
@@ -164,8 +168,8 @@ button:focus {
 
 .navbar-toggler:not(.collapsed) span:nth-child(1) {
   position: absolute !important;
-  left: 12px !important;
-  top: 10px !important;
+  left: 10px !important;
+  top: 12px !important;
   transform: rotate(135deg) !important;
 }
 
@@ -175,15 +179,55 @@ button:focus {
 
 .navbar-toggler:not(.collapsed) span:nth-child(3) {
   position: absolute !important;
-  left: 12px !important;
-  top: 10px !important;
+  left: 10px !important;
+  top: 12px !important;
   transform: rotate(-135deg) !important;
 }
 
 @media (max-width: 991px) {
   .navbar {
-    background-color: rgba(11, 15, 25, 0.96) !important;
-    padding: 0.8rem 1.2rem !important;
+    background-color: rgba(11, 15, 25, 0.98) !important;
+    padding: 0.55rem 1rem !important;
+  }
+
+  .navbar > .container {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .brand-logo-wrap {
+    max-width: calc(100% - 55px) !important;
+  }
+
+  .brand-monogram-box {
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 0.8rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .brand-name-text {
+    font-size: 1rem !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  .navbar-toggler {
+    padding: 4px 6px !important;
+    margin-left: auto !important;
+  }
+
+  .navbar-collapse {
+    background: rgba(15, 23, 42, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(56, 189, 248, 0.2) !important;
+    border-radius: 14px !important;
+    margin-top: 10px !important;
+    padding: 1rem !important;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6) !important;
   }
 }
 
@@ -746,28 +790,59 @@ button:focus {
   box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px rgba(56, 189, 248, 0.15) !important;
 }
 
-.project-card-topbar {
+.project-card-topbar,
+.allfitness-card-topbar,
+.velisse-card-topbar {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  gap: 8px !important;
+  min-height: 42px !important;
+  padding: 0.5rem 1rem !important;
   background: rgba(2, 6, 23, 0.55);
   border-bottom: 1px solid rgba(148, 163, 184, 0.1);
 }
 
+.allfitness-badge-featured,
+.velisse-badge-featured,
 .project-category-badge {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 600;
+  font-size: 0.67rem !important;
+  font-weight: 700 !important;
   color: #94a3b8;
   letter-spacing: 0.03em;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: calc(100% - 105px) !important;
+  display: inline-block !important;
+}
+
+.allfitness-badge-featured {
+  background: linear-gradient(135deg, #0ea5e9, #6366f1) !important;
+  color: #ffffff !important;
+  padding: 3px 8px !important;
+  border-radius: 6px;
+}
+
+.velisse-badge-featured {
+  background: linear-gradient(135deg, #d4af37, #f7d780) !important;
+  color: #120e03 !important;
+  padding: 3px 8px !important;
+  border-radius: 6px;
 }
 
 .project-status-pill {
-  display: inline-flex;
-  align-items: center;
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  font-size: 0.68rem !important;
+  font-weight: 600 !important;
+  display: inline-flex !important;
+  align-items: center !important;
   gap: 5px;
   background: rgba(16, 185, 129, 0.12);
   border: 1px solid rgba(16, 185, 129, 0.3);
   color: #34d399;
-  font-size: 0.68rem;
-  font-weight: 600;
   padding: 2px 8px;
   border-radius: 12px;
 }
@@ -779,26 +854,87 @@ button:focus {
   background: #10b981;
 }
 
-.project-card-img-container {
-  height: 205px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px;
-  background: radial-gradient(circle at center, rgba(30, 41, 59, 0.5) 0%, rgba(2, 6, 23, 0.85) 100%);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
-  overflow: hidden;
+.project-card-img-container,
+.allfitness-card-img-wrapper,
+.velisse-card-img-wrapper {
+  height: 190px !important;
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 24px 20px !important;
+  background: radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0.45) 0%, rgba(9, 13, 24, 0.96) 100%) !important;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1) !important;
+  overflow: hidden !important;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.project-card-img-container img {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-  transition: transform 0.4s ease;
+.project-card-img-container:hover,
+.allfitness-card-img-wrapper:hover,
+.velisse-card-img-wrapper:hover {
+  background: radial-gradient(circle at 50% 50%, rgba(14, 165, 233, 0.14) 0%, rgba(9, 13, 24, 0.98) 100%) !important;
 }
 
-.project-card-view:hover .project-card-img-container img {
-  transform: scale(1.05);
+.project-card-logo-img,
+.allfitness-card-img,
+.velisse-card-img {
+  max-height: 110px !important;
+  max-width: 82% !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.5));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease !important;
+}
+
+.project-card-img-container:hover .project-card-logo-img,
+.allfitness-card-img-wrapper:hover .allfitness-card-img,
+.velisse-card-img-wrapper:hover .velisse-card-img {
+  transform: scale(1.08) !important;
+  filter: drop-shadow(0 8px 24px rgba(56, 189, 248, 0.38)) !important;
+}
+
+.project-card-hover-overlay,
+.allfitness-img-hover-hint,
+.velisse-img-hover-hint {
+  position: absolute !important;
+  bottom: 12px !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) translateY(8px) !important;
+  background: rgba(14, 165, 233, 0.94) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(56, 189, 248, 0.5) !important;
+  color: #ffffff !important;
+  font-size: 0.73rem !important;
+  font-weight: 700 !important;
+  padding: 4px 14px !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.45) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: all 0.25s ease !important;
+  white-space: nowrap !important;
+  z-index: 2;
+}
+
+.velisse-img-hover-hint {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.95), rgba(247, 215, 128, 0.95)) !important;
+  color: #120e03 !important;
+  border-color: rgba(212, 175, 55, 0.6) !important;
+  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4) !important;
+}
+
+.project-card-img-container:hover .project-card-hover-overlay,
+.allfitness-card-img-wrapper:hover .allfitness-img-hover-hint,
+.velisse-card-img-wrapper:hover .velisse-img-hover-hint {
+  opacity: 1 !important;
+  transform: translateX(-50%) translateY(0) !important;
+}
+
+.project-card-clickable {
+  cursor: pointer !important;
 }
 
 .project-card-img-invert {
@@ -1036,49 +1172,6 @@ button:focus {
   border-color: #38bdf8;
   color: #020617;
   font-weight: 700;
-}
-
-.allfitness-card-img-wrapper {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  background: #050811;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 205px;
-}
-
-.allfitness-card-img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.allfitness-card-img-wrapper:hover .allfitness-card-img {
-  transform: scale(1.05);
-}
-
-.allfitness-img-hover-hint {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: rgba(2, 6, 23, 0.88);
-  backdrop-filter: blur(8px);
-  color: #38bdf8;
-  font-size: 0.74rem;
-  font-weight: 600;
-  padding: 4px 11px;
-  border-radius: 20px;
-  border: 1px solid rgba(56, 189, 248, 0.4);
-  pointer-events: none;
-  transition: all 0.25s ease;
-}
-
-.allfitness-card-img-wrapper:hover .allfitness-img-hover-hint {
-  background: #38bdf8;
-  color: #020617;
 }
 
 .allfitness-main-btn {
@@ -1502,42 +1595,6 @@ button:focus {
   color: #120e03 !important;
   padding: 4px 8px !important;
   border-radius: 6px;
-}
-
-.velisse-card-img-wrapper {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  background: #050811;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 205px;
-}
-
-.velisse-card-img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
-
-.velisse-card-img-wrapper:hover .velisse-card-img {
-  transform: scale(1.05);
-}
-
-.velisse-img-hover-hint {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: rgba(11, 13, 23, 0.88);
-  color: #f3d483;
-  font-size: 0.74rem;
-  font-weight: 600;
-  padding: 4px 11px;
-  border-radius: 20px;
-  border: 1px solid rgba(229, 192, 105, 0.4);
-  pointer-events: none;
 }
 
 .velisse-demo-main-btn {

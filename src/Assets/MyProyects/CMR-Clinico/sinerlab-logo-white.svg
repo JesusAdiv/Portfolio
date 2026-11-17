@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sinerlabGradW" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="50%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <filter id="softGlowW" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#38bdf8" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Simbolo Hexagonal Médico / Biotecnológico -->
+  <g transform="translate(10, 8)" filter="url(#softGlowW)">
+    <polygon points="32,4 58,19 58,47 32,62 6,47 6,19" fill="url(#sinerlabGradW)" rx="6" />
+    <polygon points="32,10 52,22 52,44 32,56 12,44 12,22" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-opacity="0.4" />
+    <path d="M29 20 H35 V28 H43 V34 H35 V42 H29 V34 H21 V28 H29 Z" fill="#ffffff" />
+    <circle cx="32" cy="10" r="3" fill="#ffffff" />
+    <circle cx="52" cy="22" r="3" fill="#bae6fd" />
+    <circle cx="52" cy="44" r="3" fill="#ffffff" />
+    <circle cx="32" cy="56" r="3" fill="#bae6fd" />
+    <circle cx="12" cy="44" r="3" fill="#ffffff" />
+    <circle cx="12" cy="22" r="3" fill="#bae6fd" />
+  </g>
+
+  <!-- Tipografía Corporativa en Blanco para fondos oscuros -->
+  <g transform="translate(85, 45)">
+    <text font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="900" fill="#ffffff" letter-spacing="2.5">
+      SINER<tspan fill="#38bdf8">LAB</tspan>
+    </text>
+    <text y="19" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="9" font-weight="700" fill="#94a3b8" letter-spacing="3.2">
+      SISTEMA CLÍNICO &amp; DIAGNÓSTICO
+    </text>
+  </g>
+</svg>

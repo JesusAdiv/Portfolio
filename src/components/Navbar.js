@@ -52,7 +52,7 @@ function NavBar() {
       expand="lg"
       className={navColour ? "sticky" : "navbar"}
     >
-      <Container>
+      <Container className="d-flex align-items-center justify-content-between flex-nowrap">
         <Navbar.Brand
           as={Link}
           to="/"
@@ -70,13 +70,13 @@ function NavBar() {
             <div className="d-flex align-items-center gap-2">
               <span className="brand-name-text">Jesús Adiv Barroso</span>
               <span
-                className="brand-status-pill"
+                className="brand-status-pill d-none d-sm-inline-flex"
                 title="Disponible para contratación inmediata (Remoto / Híbrido)"
               >
                 <span className="brand-status-dot"></span> Disponible
               </span>
             </div>
-            <span className="brand-role-sub">
+            <span className="brand-role-sub d-none d-md-block">
               Ing. Ciencias de la Computación • Web, Mobile, IA & Datos
             </span>
           </div>
