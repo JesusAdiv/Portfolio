@@ -79,7 +79,7 @@ function Projects({ embedded = false }) {
           </div>
         </div>
 
-        <Row className="g-4" style={{ justifyContent: "center", paddingBottom: "10px" }}>
+        <Row className="g-4 align-items-start" style={{ justifyContent: "center", paddingBottom: "10px" }}>
           {/* 1. AllFitness */}
           {showCard(["saas", "mobile"]) && (
             <Col lg={4} md={6} className="project-card">

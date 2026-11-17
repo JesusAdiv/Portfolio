@@ -21,7 +21,7 @@ import allfitnessLogo from "../../Assets/MyProyects/AllFitness/allfitness-logo.p
 
 function AllFitnessCard({ onOpenModal }) {
   const publicUrl = process.env.PUBLIC_URL || "";
-  const [showTech, setShowTech] = useState(false);
+  const [showMore, setShowMore] = useState(false);
   const [showPhoneSimulator, setShowPhoneSimulator] = useState(false);
   const [iframeKey, setIframeKey] = useState(0);
 
@@ -67,78 +67,91 @@ function AllFitnessCard({ onOpenModal }) {
               Plataforma integral multi-gimnasio (Web SaaS + App nativa en Flutter publicada en Google Play) para administrar socios, accesos QR y entrenamiento con IA.
             </p>
 
-            {/* 3 Scannable Impact Bullets */}
-            <ul className="project-impact-list mb-3">
-              <li className="project-impact-item">
-                <FaCheckCircle className="impact-check-icon" />
-                <span>
-                  <strong>App en Google Play (Offline-First):</strong> registro de series, cálculo de 1RM en vivo y sincronización SQLite sin internet.
-                </span>
-              </li>
-              <li className="project-impact-item">
-                <FaCheckCircle className="impact-check-icon" />
-                <span>
-                  <strong>Web SaaS Multi-Tenant:</strong> control de membresías, analíticas y lector QR en navegador acelerado con WebAssembly (60 FPS).
-                </span>
-              </li>
-              <li className="project-impact-item">
-                <FaCheckCircle className="impact-check-icon" />
-                <span>
-                  <strong>Motor IA con OpenAI & Heatmap Muscular:</strong> generación determinista de rutinas JSON y mapa anatómico interactivo.
-                </span>
-              </li>
-            </ul>
-
-            {/* Clean Tech Stack Pills */}
-            <div className="allfitness-card-tags mb-3 d-flex flex-wrap gap-1">
-              <span className="project-modern-pill">Flutter & Dart</span>
-              <span className="project-modern-pill">Riverpod & SQLite</span>
-              <span className="project-modern-pill">Angular 13 & RxJS</span>
-              <span className="project-modern-pill">Node.js & Express</span>
-              <span className="project-modern-pill">MongoDB</span>
-              <span className="project-modern-pill">OpenAI API</span>
-              <span className="project-modern-pill">WebAssembly QR</span>
-              <span className="project-modern-pill">AWS S3</span>
-            </div>
-
-            {/* Deep Technical Architecture Drawer */}
+            {/* Option: Ver más (Puntos verdes, Chips y Arquitectura) */}
             <div className="project-tech-drawer-wrap mb-2">
               <button
                 type="button"
                 className="project-tech-toggle-btn"
-                onClick={() => setShowTech(!showTech)}
+                onClick={() => setShowMore(!showMore)}
               >
                 <FaCode className="me-1 text-info" />
                 <span>
-                  {showTech ? "Ocultar arquitectura técnica" : "Ver arquitectura técnica detallada"}
+                  {showMore
+                    ? "Ver menos"
+                    : "Ver más (Stack, detalles y arquitectura)"}
                 </span>
-                {showTech ? <FaChevronUp className="ms-auto" /> : <FaChevronDown className="ms-auto" />}
+                {showMore ? (
+                  <FaChevronUp className="ms-auto" />
+                ) : (
+                  <FaChevronDown className="ms-auto" />
+                )}
               </button>
-              {showTech && (
-                <div className="project-tech-drawer-body mt-2">
-                  <div className="tech-spec-row">
-                    <span className="tech-spec-label">Patrón & Arquitectura:</span>
-                    <span className="tech-spec-val">
-                      SaaS Multi-Tenant con aislamiento por <code>gymId</code> + App Móvil Clean Architecture (Offline-First).
-                    </span>
+
+              {showMore && (
+                <div className="project-details-expanded mt-3">
+                  {/* Puntos en verde (Impact Bullets) */}
+                  <ul className="project-impact-list mb-3">
+                    <li className="project-impact-item">
+                      <FaCheckCircle className="impact-check-icon" />
+                      <span>
+                        <strong>App en Google Play (Offline-First):</strong> registro de series, cálculo de 1RM en vivo y sincronización SQLite sin internet.
+                      </span>
+                    </li>
+                    <li className="project-impact-item">
+                      <FaCheckCircle className="impact-check-icon" />
+                      <span>
+                        <strong>Web SaaS Multi-Tenant:</strong> control de membresías, analíticas y lector QR en navegador acelerado con WebAssembly (60 FPS).
+                      </span>
+                    </li>
+                    <li className="project-impact-item">
+                      <FaCheckCircle className="impact-check-icon" />
+                      <span>
+                        <strong>Motor IA con OpenAI & Heatmap Muscular:</strong> generación determinista de rutinas JSON y mapa anatómico interactivo.
+                      </span>
+                    </li>
+                  </ul>
+
+                  {/* Chips (Clean Tech Stack Pills) */}
+                  <div className="allfitness-card-tags mb-3 d-flex flex-wrap gap-1">
+                    <span className="project-modern-pill">Flutter & Dart</span>
+                    <span className="project-modern-pill">Riverpod & SQLite</span>
+                    <span className="project-modern-pill">Angular 13 & RxJS</span>
+                    <span className="project-modern-pill">Node.js & Express</span>
+                    <span className="project-modern-pill">MongoDB</span>
+                    <span className="project-modern-pill">OpenAI API</span>
+                    <span className="project-modern-pill">WebAssembly QR</span>
+                    <span className="project-modern-pill">AWS S3</span>
                   </div>
-                  <div className="tech-spec-row">
-                    <span className="tech-spec-label">Frontend Web SaaS:</span>
-                    <span className="tech-spec-val">
-                      Angular 13, TypeScript, RxJS (<code>BehaviorSubject</code>), Route Guards (<code>GymExistGuard</code>), Chart.js, FullCalendar v6 y decodificador QR en cámara web con <code>ngx-scanner-qrcode</code> (WASM a 60 FPS).
-                    </span>
-                  </div>
-                  <div className="tech-spec-row">
-                    <span className="tech-spec-label">App Móvil (iOS / Android):</span>
-                    <span className="tech-spec-val">
-                      Flutter & Dart, gestión de estado reactivo con <code>Riverpod</code>, motor <code>SincronizadorOffline</code> sobre SQLite + <code>SharedPreferences</code> con cola idempotente, <code>WorkManager</code> (isolates en 2do plano) y fork propio de <code>muscle_selector</code> (CustomPainter SVG).
-                    </span>
-                  </div>
-                  <div className="tech-spec-row">
-                    <span className="tech-spec-label">Backend, Cloud & IA:</span>
-                    <span className="tech-spec-val">
-                      Node.js, Express, API RESTful, MongoDB (Mongoose), autenticación JWT + RBAC + Bcrypt, integración OpenAI API con validación rígida de JSON Schema (sin alucinaciones), almacenamiento multimedia en AWS S3 y proceso PM2.
-                    </span>
+
+                  {/* Arquitectura Técnica Detallada */}
+                  <div className="project-tech-drawer-body mt-2">
+                    <div className="text-info fw-bold small mb-2 d-flex align-items-center gap-1">
+                      <FaCode /> Arquitectura Técnica:
+                    </div>
+                    <div className="tech-spec-row">
+                      <span className="tech-spec-label">Patrón & Arquitectura:</span>
+                      <span className="tech-spec-val">
+                        SaaS Multi-Tenant con aislamiento por <code>gymId</code> + App Móvil Clean Architecture (Offline-First).
+                      </span>
+                    </div>
+                    <div className="tech-spec-row">
+                      <span className="tech-spec-label">Frontend Web SaaS:</span>
+                      <span className="tech-spec-val">
+                        Angular 13, TypeScript, RxJS (<code>BehaviorSubject</code>), Route Guards (<code>GymExistGuard</code>), Chart.js, FullCalendar v6 y decodificador QR en cámara web con <code>ngx-scanner-qrcode</code> (WASM a 60 FPS).
+                      </span>
+                    </div>
+                    <div className="tech-spec-row">
+                      <span className="tech-spec-label">App Móvil (iOS / Android):</span>
+                      <span className="tech-spec-val">
+                        Flutter & Dart, gestión de estado reactivo con <code>Riverpod</code>, motor <code>SincronizadorOffline</code> sobre SQLite + <code>SharedPreferences</code> con cola idempotente, <code>WorkManager</code> (isolates en 2do plano) y fork propio de <code>muscle_selector</code> (CustomPainter SVG).
+                      </span>
+                    </div>
+                    <div className="tech-spec-row">
+                      <span className="tech-spec-label">Backend, Cloud & IA:</span>
+                      <span className="tech-spec-val">
+                        Node.js, Express, API RESTful, MongoDB (Mongoose), autenticación JWT + RBAC + Bcrypt, integración OpenAI API con validación rígida de JSON Schema (sin alucinaciones), almacenamiento multimedia en AWS S3 y proceso PM2.
+                      </span>
+                    </div>
                   </div>
                 </div>
               )}

@@ -13,7 +13,7 @@ import {
 } from "react-icons/fa";
 
 function ProjectCards(props) {
-  const [showTech, setShowTech] = useState(false);
+  const [showMore, setShowMore] = useState(false);
 
   return (
     <Card className={`project-card-view ${props.featuredClass || ""}`}>
@@ -125,60 +125,69 @@ function ProjectCards(props) {
             {props.description}
           </p>
 
-          {/* 3 Scannable Impact Bullets */}
-          {props.highlights && props.highlights.length > 0 && (
-            <ul className="project-impact-list mb-3">
-              {props.highlights.map((item, idx) => (
-                <li key={idx} className="project-impact-item">
-                  <FaCheckCircle className="impact-check-icon" />
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-
-          {/* Clean Tech Stack Pills */}
-          {props.tags && props.tags.length > 0 && (
-            <div className="project-tags-wrap d-flex flex-wrap gap-1 mb-3">
-              {props.tags.map((tag, i) => (
-                <span key={i} className="project-modern-pill">
-                  {tag}
-                </span>
-              ))}
-            </div>
-          )}
-
-          {/* Deep Expandable Technical Architecture Drawer */}
-          {(props.techSpecs || props.techDetails) && (
+          {/* Option: Ver más (Puntos verdes, Chips y Arquitectura) */}
+          {(props.highlights?.length > 0 || props.tags?.length > 0 || props.techSpecs || props.techDetails) && (
             <div className="project-tech-drawer-wrap mb-2">
               <button
                 type="button"
                 className="project-tech-toggle-btn"
-                onClick={() => setShowTech(!showTech)}
+                onClick={() => setShowMore(!showMore)}
               >
                 <FaCode className="me-1 text-info" />
                 <span>
-                  {showTech
-                    ? "Ocultar arquitectura técnica"
-                    : "Ver arquitectura técnica detallada"}
+                  {showMore
+                    ? "Ver menos"
+                    : "Ver más (Stack, detalles y arquitectura)"}
                 </span>
-                {showTech ? (
+                {showMore ? (
                   <FaChevronUp className="ms-auto" />
                 ) : (
                   <FaChevronDown className="ms-auto" />
                 )}
               </button>
-              {showTech && (
-                <div className="project-tech-drawer-body mt-2">
-                  {props.techSpecs && props.techSpecs.length > 0 ? (
-                    props.techSpecs.map((spec, idx) => (
-                      <div key={idx} className="tech-spec-row">
-                        <span className="tech-spec-label">{spec.label}:</span>
-                        <span className="tech-spec-val">{spec.value}</span>
+
+              {showMore && (
+                <div className="project-details-expanded mt-3">
+                  {/* 3 Scannable Impact Bullets */}
+                  {props.highlights && props.highlights.length > 0 && (
+                    <ul className="project-impact-list mb-3">
+                      {props.highlights.map((item, idx) => (
+                        <li key={idx} className="project-impact-item">
+                          <FaCheckCircle className="impact-check-icon" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+
+                  {/* Clean Tech Stack Pills */}
+                  {props.tags && props.tags.length > 0 && (
+                    <div className="project-tags-wrap d-flex flex-wrap gap-1 mb-3">
+                      {props.tags.map((tag, i) => (
+                        <span key={i} className="project-modern-pill">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Deep Technical Architecture */}
+                  {(props.techSpecs || props.techDetails) && (
+                    <div className="project-tech-drawer-body mt-2">
+                      <div className="text-info fw-bold small mb-2 d-flex align-items-center gap-1">
+                        <FaCode /> Arquitectura Técnica:
                       </div>
-                    ))
-                  ) : (
-                    <div>{props.techDetails}</div>
+                      {props.techSpecs && props.techSpecs.length > 0 ? (
+                        props.techSpecs.map((spec, idx) => (
+                          <div key={idx} className="tech-spec-row">
+                            <span className="tech-spec-label">{spec.label}:</span>
+                            <span className="tech-spec-val">{spec.value}</span>
+                          </div>
+                        ))
+                      ) : (
+                        <div>{props.techDetails}</div>
+                      )}
+                    </div>
                   )}
                 </div>
               )}

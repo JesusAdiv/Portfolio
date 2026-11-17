@@ -15,7 +15,7 @@ import velisseLogo from "../../Assets/MyProyects/Velisse-Invitaciones/logo.png";
 
 function VelisseCard() {
   const publicUrl = process.env.PUBLIC_URL || "";
-  const [showTech, setShowTech] = useState(false);
+  const [showMore, setShowMore] = useState(false);
 
   return (
     <Card className="project-card-view velisse-card-highlight">
@@ -58,82 +58,95 @@ function VelisseCard() {
             Ecosistema SaaS y <strong>Progressive Web App (PWA)</strong> que transforma invitaciones estáticas en experiencias interactivas con pases QR offline, mapa de mesas y RSVP en WhatsApp.
           </p>
 
-          {/* 3 Scannable Impact Bullets */}
-          <ul className="project-impact-list mb-3">
-            <li className="project-impact-item">
-              <FaCheckCircle className="impact-check-icon" />
-              <span>
-                <strong>Arquitectura PWA Instalable:</strong> acceso instantáneo con Service Workers, caché de boletos QR sin internet y experiencia nativa móvil.
-              </span>
-            </li>
-            <li className="project-impact-item">
-              <FaCheckCircle className="impact-check-icon" />
-              <span>
-                <strong>Confirmación WhatsApp 1-Clic & Seating Chart:</strong> asignación visual de mesas y escáner QR en puerta desde el navegador.
-              </span>
-            </li>
-            <li className="project-impact-item">
-              <FaCheckCircle className="impact-check-icon" />
-              <span>
-                <strong>Motor de Plantillas + IA (Gemini):</strong> animaciones GSAP de alta costura, música inmersiva y modo Stories vertical.
-              </span>
-            </li>
-          </ul>
+            {/* Option: Ver más (Puntos verdes, Chips y Arquitectura) */}
+            <div className="project-tech-drawer-wrap mb-2">
+              <button
+                type="button"
+                className="project-tech-toggle-btn"
+                onClick={() => setShowMore(!showMore)}
+              >
+                <FaCode className="me-1 text-info" />
+                <span>
+                  {showMore
+                    ? "Ver menos"
+                    : "Ver más (Stack, detalles y arquitectura)"}
+                </span>
+                {showMore ? (
+                  <FaChevronUp className="ms-auto" />
+                ) : (
+                  <FaChevronDown className="ms-auto" />
+                )}
+              </button>
 
-          {/* Clean Tech Stack Pills */}
-          <div className="velisse-card-tags mb-3 d-flex flex-wrap gap-1">
-            <span className="project-modern-pill">Angular 13+</span>
-            <span className="project-modern-pill">PWA & Service Workers</span>
-            <span className="project-modern-pill">TypeScript & RxJS</span>
-            <span className="project-modern-pill">GSAP & AOS</span>
-            <span className="project-modern-pill">WhatsApp Cloud API</span>
-            <span className="project-modern-pill">HTML5 QR & Canvas</span>
-            <span className="project-modern-pill">Stripe</span>
-            <span className="project-modern-pill">Gemini IA</span>
-          </div>
+              {showMore && (
+                <div className="project-details-expanded mt-3">
+                  {/* Puntos en verde (Impact Bullets) */}
+                  <ul className="project-impact-list mb-3">
+                    <li className="project-impact-item">
+                      <FaCheckCircle className="impact-check-icon" />
+                      <span>
+                        <strong>Arquitectura PWA Instalable:</strong> acceso instantáneo con Service Workers, caché de boletos QR sin internet y experiencia nativa móvil.
+                      </span>
+                    </li>
+                    <li className="project-impact-item">
+                      <FaCheckCircle className="impact-check-icon" />
+                      <span>
+                        <strong>Confirmación WhatsApp 1-Clic & Seating Chart:</strong> asignación visual de mesas y escáner QR en puerta desde el navegador.
+                      </span>
+                    </li>
+                    <li className="project-impact-item">
+                      <FaCheckCircle className="impact-check-icon" />
+                      <span>
+                        <strong>Motor de Plantillas + IA (Gemini):</strong> animaciones GSAP de alta costura, música inmersiva y modo Stories vertical.
+                      </span>
+                    </li>
+                  </ul>
 
-          {/* Deep Technical Architecture Drawer */}
-          <div className="project-tech-drawer-wrap mb-2">
-            <button
-              type="button"
-              className="project-tech-toggle-btn"
-              onClick={() => setShowTech(!showTech)}
-            >
-              <FaCode className="me-1 text-info" />
-              <span>
-                {showTech ? "Ocultar arquitectura técnica" : "Ver arquitectura técnica detallada"}
-              </span>
-              {showTech ? <FaChevronUp className="ms-auto" /> : <FaChevronDown className="ms-auto" />}
-            </button>
-            {showTech && (
-              <div className="project-tech-drawer-body mt-2">
-                <div className="tech-spec-row">
-                  <span className="tech-spec-label">Patrón & Runtime:</span>
-                  <span className="tech-spec-val">
-                    Single Page Application (SPA) + <strong>Progressive Web App (PWA)</strong> gobernada por <code>UniversalInvitationRuntime</code> para inyectar datos, audio y temas en +20 plantillas.
-                  </span>
+                  {/* Chips (Clean Tech Stack Pills) */}
+                  <div className="velisse-card-tags mb-3 d-flex flex-wrap gap-1">
+                    <span className="project-modern-pill">Angular 13+</span>
+                    <span className="project-modern-pill">PWA & Service Workers</span>
+                    <span className="project-modern-pill">TypeScript & RxJS</span>
+                    <span className="project-modern-pill">GSAP & AOS</span>
+                    <span className="project-modern-pill">WhatsApp Cloud API</span>
+                    <span className="project-modern-pill">HTML5 QR & Canvas</span>
+                    <span className="project-modern-pill">Stripe</span>
+                    <span className="project-modern-pill">Gemini IA</span>
+                  </div>
+
+                  {/* Arquitectura Técnica Detallada */}
+                  <div className="project-tech-drawer-body mt-2">
+                    <div className="text-info fw-bold small mb-2 d-flex align-items-center gap-1">
+                      <FaCode /> Arquitectura Técnica:
+                    </div>
+                    <div className="tech-spec-row">
+                      <span className="tech-spec-label">Patrón & Runtime:</span>
+                      <span className="tech-spec-val">
+                        Single Page Application (SPA) + <strong>Progressive Web App (PWA)</strong> gobernada por <code>UniversalInvitationRuntime</code> para inyectar datos, audio y temas en +20 plantillas.
+                      </span>
+                    </div>
+                    <div className="tech-spec-row">
+                      <span className="tech-spec-label">Frontend, PWA & UI:</span>
+                      <span className="tech-spec-val">
+                        Angular 13+, TypeScript, RxJS (<code>Observables</code> / <code>BehaviorSubject</code>), Web App Manifest & Service Workers (caché local de pases e imágenes), animaciones con GSAP, AOS y <code>canvas-confetti</code>.
+                      </span>
+                    </div>
+                    <div className="tech-spec-row">
+                      <span className="tech-spec-label">Motores Cliente & QR:</span>
+                      <span className="tech-spec-val">
+                        Renderizado masivo de pases gráficos con QR en el navegador mediante <code>html2canvas</code> + empaquetado asíncrono en <code>JSZip</code> (cero carga en servidor), y escáner en recepción con <code>html5-qrcode</code>.
+                      </span>
+                    </div>
+                    <div className="tech-spec-row">
+                      <span className="tech-spec-label">Cloud, Pagos & IA:</span>
+                      <span className="tech-spec-val">
+                        Integración con Google Gemini AI para generación asistida de diseño, WhatsApp Cloud API para envíos y confirmaciones, pasarela Stripe y almacenamiento en AWS S3.
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <div className="tech-spec-row">
-                  <span className="tech-spec-label">Frontend, PWA & UI:</span>
-                  <span className="tech-spec-val">
-                    Angular 13+, TypeScript, RxJS (<code>Observables</code> / <code>BehaviorSubject</code>), Web App Manifest & Service Workers (caché local de pases e imágenes), animaciones con GSAP, AOS y <code>canvas-confetti</code>.
-                  </span>
-                </div>
-                <div className="tech-spec-row">
-                  <span className="tech-spec-label">Motores Cliente & QR:</span>
-                  <span className="tech-spec-val">
-                    Renderizado masivo de pases gráficos con QR en el navegador mediante <code>html2canvas</code> + empaquetado asíncrono en <code>JSZip</code> (cero carga en servidor), y escáner en recepción con <code>html5-qrcode</code>.
-                  </span>
-                </div>
-                <div className="tech-spec-row">
-                  <span className="tech-spec-label">Cloud, Pagos & IA:</span>
-                  <span className="tech-spec-val">
-                    Integración con Google Gemini AI para generación asistida de diseño, WhatsApp Cloud API para envíos y confirmaciones, pasarela Stripe y almacenamiento en AWS S3.
-                  </span>
-                </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
         </div>
 
         {/* Direct Demo Sections Buttons */}
